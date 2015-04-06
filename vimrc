@@ -40,6 +40,12 @@ set hlsearch
 " save file whether in insert or normal mode "
 inoremap <leader>s <c-o>:w<cr><esc>
 nnoremap <leader>s :w<cr>
+set hidden "allow buffer switch with unsaved"
+" Persistent undo
+set undofile
+set undodir=$HOME/.vim_undo
+set undolevels=1000
+set undoreload=10000
 
 
 " required for vundle
@@ -111,6 +117,10 @@ nmap <Left> :bp<cr>
 nmap <Right> :bn<cr>
 nmap <Up> :ls<cr>
 nmap <Down> <C-^>
+vmap <Left> :bp<cr>
+vmap <Right> :bn<cr>
+vmap <Up> :ls<cr>
+vmap <Down> <C-^>
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
