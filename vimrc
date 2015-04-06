@@ -21,6 +21,13 @@ let &showbreak='↪ '
 " Minimal number of screen lines to keep above and below the cursor "
 set scrolloff=3
 
+:set relativenumber
+:set nopaste
+
+set incsearch " Preview as you type "
+set ignorecase " Don't be case sensitive "
+set smartcase " If you type a capital letter, be case sensitive "
+
 " When sourcing multiple times your vimrc file "
 " clear the autocommands first instead of adding them "
 augroup mygroup
@@ -73,6 +80,9 @@ let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<A-n>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+
+Plugin 'inside/vim-search-pulse'
+
 
 
 " All of your Plugins must be added before the following line
