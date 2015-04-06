@@ -41,6 +41,7 @@ set hlsearch
 inoremap <leader>s <c-o>:w<cr><esc>
 nnoremap <leader>s :w<cr>
 
+
 " required for vundle
 filetype off
 " set the runtime path to include Vundle and initialize
@@ -97,6 +98,14 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/camelcasemotion'
 Plugin 'sjl/gundo.vim'
 nnoremap <F5> :GundoToggle<CR>
+
+Plugin 'tpope/vim-unimpaired'
+" Bubble single lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+" Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
