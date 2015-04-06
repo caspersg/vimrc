@@ -28,6 +28,10 @@ set incsearch " Preview as you type "
 set ignorecase " Don't be case sensitive "
 set smartcase " If you type a capital letter, be case sensitive "
 
+" save file whether in insert or normal mode "
+inoremap <leader>s <c-o>:w<cr><esc>
+nnoremap <leader>s :w<cr>
+
 " When sourcing multiple times your vimrc file "
 " clear the autocommands first instead of adding them "
 augroup mygroup
@@ -83,7 +87,12 @@ let g:multi_cursor_quit_key='<Esc>'
 
 Plugin 'inside/vim-search-pulse'
 
+Plugin 'Raimondi/delimitMate'
+let delimitMate_expand_inside_quotes=1
+let delimitMate_quotes = "\" ' `"
 
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/camelcasemotion'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
