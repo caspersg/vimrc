@@ -93,6 +93,8 @@ let delimitMate_quotes = "\" ' `"
 
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/camelcasemotion'
+Plugin 'sjl/gundo.vim'
+nnoremap <F5> :GundoToggle<CR>
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
