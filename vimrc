@@ -1,5 +1,13 @@
 set nocompatible              " be iMproved, required
 
+" When sourcing multiple times your vimrc file "
+" clear the autocommands first instead of adding them "
+augroup mygroup
+    autocmd!
+    autocmd FileType make setlocal noexpandtab
+augroup END
+
+
 " Should always have the same value for simplicity's sake "
 set shiftwidth=2 tabstop=2 softtabstop=2
 set expandtab
@@ -8,12 +16,12 @@ syntax on
 nnoremap <leader>E :edit $MYVIMRC<cr>
 nnoremap <leader>S :source $MYVIMRC<cr>
 
-:set clipboard=unnamedplus
+set clipboard=unnamedplus
 set go+=a               " Visual selection automatically copied to the clipboard
 
 " show matches
-:set showmatch
-:set matchtime=3
+set showmatch
+set matchtime=3
 
 " String to put at the start of lines that have been wrapped "
 let &showbreak='↪ '
@@ -21,23 +29,17 @@ let &showbreak='↪ '
 " Minimal number of screen lines to keep above and below the cursor "
 set scrolloff=3
 
-:set relativenumber
-:set nopaste
+set relativenumber
+set nopaste
 
 set incsearch " Preview as you type "
 set ignorecase " Don't be case sensitive "
 set smartcase " If you type a capital letter, be case sensitive "
+set hlsearch
 
 " save file whether in insert or normal mode "
 inoremap <leader>s <c-o>:w<cr><esc>
 nnoremap <leader>s :w<cr>
-
-" When sourcing multiple times your vimrc file "
-" clear the autocommands first instead of adding them "
-augroup mygroup
-    autocmd!
-    autocmd FileType make setlocal noexpandtab
-augroup END
 
 " required for vundle
 filetype off
