@@ -107,6 +107,11 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
+nmap <Left> :bp<cr>
+nmap <Right> :bn<cr>
+nmap <Up> :ls<cr>
+nmap <Down> <C-^>
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
