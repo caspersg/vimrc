@@ -1,6 +1,25 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+set nocompatible
+" Should always have the same value for simplicity's sake "
+set shiftwidth=2 tabstop=2 softtabstop=2
+set expandtab
+filetype plugin on
+syntax on
+
+nnoremap <leader>E :edit $MYVIMRC<cr>
+nnoremap <leader>S :source $MYVIMRC<cr>
+
+:set clipboard=unnamedplus
+
+" When sourcing multiple times your vimrc file "
+" clear the autocommands first instead of adding them "
+augroup mygroup
+    autocmd!
+    autocmd FileType make setlocal noexpandtab
+augroup END
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -31,6 +50,9 @@ nmap <F8> :TagbarToggle<CR>
 " syntax highlighting
 Plugin 'strogonoff/vim-coffee-script'
 Plugin 'mustache/vim-mustache-handlebars'
+
+Plugin 'luochen1990/rainbow'
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -255,8 +277,5 @@ let g:tagbar_type_groovy = {
     \ ]
 \ }
 
-set expandtab
-set shiftwidth=2
-set softtabstop=2
 
 
