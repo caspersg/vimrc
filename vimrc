@@ -98,10 +98,16 @@ Plugin 'inside/vim-search-pulse'
 Plugin 'rking/ag.vim'
 " silver searcher
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'ag --column'
 endif
 nnoremap s :Ag 
 let g:ag_highlight=1
+
+Plugin 'nelstrom/vim-qargs'
+
+Plugin 'skwp/greplace.vim'
+set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading'
 
 Plugin 'Raimondi/delimitMate'
 let delimitMate_expand_inside_quotes=1
