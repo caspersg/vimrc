@@ -141,6 +141,23 @@ vmap <Right> :bn<cr>
 vmap <Up> :ls<cr>
 vmap <Down> <C-^>
 
+" project
+Plugin 'amiorin/vim-project'
+let g:project_use_nerdtree = 1
+set rtp+=~/.vim/bundle/vim-project/
+" default starting path (the home directory)
+call project#rc()
+Project "~/ocf/onecent/oct-node", 'oct-node'
+Project "~/ocf/onecent/oct-grails", 'oct-grails'
+Project "~/ocf/onecent/punch-node", 'punch-node'
+
+" custom statusline
+Plugin 'bling/vim-airline'
+let g:airline#extensions#tabline#enabled = 1
+
+" syntax error highlighting
+Plugin 'scrooloose/syntastic'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
