@@ -7,6 +7,9 @@ augroup mygroup
     autocmd FileType make setlocal noexpandtab
 augroup END
 
+" space as leader
+let mapleader = "\<Space>"
+nnoremap <Space> <nop>
 
 " Should always have the same value for simplicity's sake "
 set shiftwidth=2 tabstop=2 softtabstop=2
@@ -29,6 +32,8 @@ let &showbreak='↪ '
 " Minimal number of screen lines to keep above and below the cursor "
 set scrolloff=3
 
+" show nerdtree style
+let g:netrw_liststyle=3
 set relativenumber
 set nopaste
 
@@ -100,7 +105,7 @@ Plugin 'rking/ag.vim'
 if executable('ag')
   let g:ackprg = 'ag --column'
 endif
-nnoremap s :Ag 
+nnoremap \ :Ag 
 let g:ag_highlight=1
 
 Plugin 'nelstrom/vim-qargs'
