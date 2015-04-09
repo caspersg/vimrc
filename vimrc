@@ -44,8 +44,8 @@ set ignorecase " Don't be case sensitive "
 set smartcase " If you type a capital letter, be case sensitive "
 set hlsearch
 
-" save file in normal mode "
-nnoremap <leader>s :w<cr>
+" write file in normal mode "
+nnoremap <leader>w :w<cr>
 set hidden "allow buffer switch with unsaved"
 " Persistent undo
 set undofile
@@ -160,6 +160,9 @@ set t_Co=256
 
 " syntax error highlighting
 Plugin 'scrooloose/syntastic'
+
+" css colour preview
+Plugin 'ap/vim-css-color'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
