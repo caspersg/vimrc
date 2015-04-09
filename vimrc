@@ -21,8 +21,14 @@ syntax on
 nnoremap <leader>E :edit $MYVIMRC<cr>
 nnoremap <leader>S :source $MYVIMRC<cr>
 
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 set go+=a               " Visual selection automatically copied to the clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
 
 " show matches
 set showmatch
@@ -38,11 +44,6 @@ set scrolloff=3
 let g:netrw_liststyle=3
 set relativenumber
 set nopaste
-
-set incsearch " Preview as you type "
-set ignorecase " Don't be case sensitive "
-set smartcase " If you type a capital letter, be case sensitive "
-set hlsearch
 
 " write file in normal mode "
 nnoremap <leader>w :w<cr>
@@ -109,6 +110,26 @@ endif
 nnoremap \ :Ag 
 let g:ag_highlight=1
 
+" incremental search
+Plugin 'haya14busa/incsearch.vim'
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay
+" :h g:incsearch#auto_nohlsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+set incsearch " Preview as you type "
+set ignorecase " Don't be case sensitive "
+set smartcase " If you type a capital letter, be case sensitive "
+set nohlsearch
+
+
 Plugin 'nelstrom/vim-qargs'
 
 Plugin 'skwp/greplace.vim'
@@ -120,6 +141,7 @@ let delimitMate_expand_inside_quotes=1
 let delimitMate_quotes = "\" ' `"
 
 Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'jeetsukumaran/vim-indentwise'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/camelcasemotion'
 Plugin 'sjl/gundo.vim'
