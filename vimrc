@@ -9,7 +9,9 @@ augroup END
 
 " space as leader
 let mapleader = "\<Space>"
-nnoremap <Space> <nop>
+nnoremap <Space> <Nop>
+" do not map any insert mode <leader> mappings, it will cause a pause for
+" every press of the spacebar!
 
 " Should always have the same value for simplicity's sake "
 set shiftwidth=2 tabstop=2 softtabstop=2
@@ -42,8 +44,7 @@ set ignorecase " Don't be case sensitive "
 set smartcase " If you type a capital letter, be case sensitive "
 set hlsearch
 
-" save file whether in insert or normal mode "
-inoremap <leader>s <c-o>:w<cr><esc>
+" save file in normal mode "
 nnoremap <leader>s :w<cr>
 set hidden "allow buffer switch with unsaved"
 " Persistent undo
@@ -154,6 +155,8 @@ Project "~/ocf/onecent/punch-node", 'punch-node'
 " custom statusline
 Plugin 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
+set t_Co=256
+"set laststatus=2
 
 " syntax error highlighting
 Plugin 'scrooloose/syntastic'
