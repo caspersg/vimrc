@@ -54,6 +54,7 @@ set undodir=$HOME/.vim_undo
 set undolevels=1000
 set undoreload=10000
 
+set autoindent
 
 " required for vundle
 filetype off
@@ -75,6 +76,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L9
 " Plugin 'user/L9', {'name': 'newL9'}
+
+" repeat support for other plugins
+Plugin 'tpope/vim-repeat'
 
 Plugin 'mileszs/ack.vim'
 
@@ -146,6 +150,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/camelcasemotion'
 Plugin 'sjl/gundo.vim'
 nnoremap <F5> :GundoToggle<CR>
+
+" change variable style camel/snake
+Plugin 'tpope/vim-abolish'
 
 Plugin 'tpope/vim-unimpaired'
 " Bubble single lines
