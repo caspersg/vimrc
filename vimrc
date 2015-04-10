@@ -153,6 +153,10 @@ nnoremap <F5> :GundoToggle<CR>
 
 " change variable style camel/snake
 Plugin 'tpope/vim-abolish'
+" json text-objects
+Plugin 'tpope/vim-jdaddy'
+" function text-objects
+Plugin 'vim-scripts/argtextobj.vim'
 
 Plugin 'tpope/vim-unimpaired'
 " Bubble single lines
