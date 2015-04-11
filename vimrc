@@ -46,8 +46,6 @@ let &showbreak='↪ '
 " Minimal number of screen lines to keep above and below the cursor "
 set scrolloff=3
 
-" show nerdtree style
-let g:netrw_liststyle=3
 set relativenumber
 set nopaste
 
@@ -59,8 +57,6 @@ set undolevels=1000
 set undoreload=10000
 
 set autoindent
-" increment numbers always as deciaml
-set nrformats
 
 " required for vundle
 filetype off
@@ -156,6 +152,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/camelcasemotion'
 Plugin 'sjl/gundo.vim'
 nnoremap <F5> :GundoToggle<CR>
+
+" support custom text objects
+Plugin 'kana/vim-textobj-user'
 
 " change variable style camel/snake
 Plugin 'tpope/vim-abolish'
