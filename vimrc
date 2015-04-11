@@ -18,6 +18,12 @@ set shiftwidth=2 tabstop=2 softtabstop=2
 set expandtab
 syntax on
 
+" custom leader commands
+" write file in normal mode "
+nnoremap <leader>w :w<cr>
+"close buffer
+nnoremap <leader>d :bd<cr>
+" vimrc edits
 nnoremap <leader>E :edit $MYVIMRC<cr>
 nnoremap <leader>S :source $MYVIMRC<cr>
 
@@ -45,8 +51,6 @@ let g:netrw_liststyle=3
 set relativenumber
 set nopaste
 
-" write file in normal mode "
-nnoremap <leader>w :w<cr>
 set hidden "allow buffer switch with unsaved"
 " Persistent undo
 set undofile
@@ -55,6 +59,8 @@ set undolevels=1000
 set undoreload=10000
 
 set autoindent
+" increment numbers always as deciaml
+set nrformats
 
 " required for vundle
 filetype off
@@ -157,6 +163,10 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-jdaddy'
 " function text-objects
 Plugin 'vim-scripts/argtextobj.vim'
+" comment out code
+Plugin 'tpope/vim-commentary'
+" entire buffer text object
+Plugin 'kana/vim-textobj-entire'
 
 Plugin 'tpope/vim-unimpaired'
 " Bubble single lines
