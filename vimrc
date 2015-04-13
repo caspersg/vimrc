@@ -26,6 +26,8 @@ nnoremap <leader>d :bd<cr>
 " vimrc edits
 nnoremap <leader>E :edit $MYVIMRC<cr>
 nnoremap <leader>S :source $MYVIMRC<cr>
+map <C-q> <Esc>
+map! <C-q> <Esc>
 
 "set clipboard=unnamedplus
 set go+=a               " Visual selection automatically copied to the clipboard
