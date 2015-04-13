@@ -255,13 +255,15 @@ let g:screen_size_by_vim_instance = 1
 
 set ssop+=resize,winpos,winsize,blank,buffers,curdir,folds,help,options,tabpages
 
-
-" save and restore session on exit and start
-"
-autocmd VIMEnter * :source ~/.session.vim
-autocmd VIMLeave * :mksession! ~/.session.vim
-
 if has("gui_running")
+  " only load the existing session for gvim. use vim for editing single files
+  " from the command line
+
+  " save and restore session on exit and start for GUI gvm only
+  "
+  autocmd VIMEnter * :source ~/.session.vim
+  autocmd VIMLeave * :mksession! ~/.session.vim
+
   function! ScreenFilename()
     if has('amiga')
       return "s:.vimsize"
