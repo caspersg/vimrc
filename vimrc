@@ -199,7 +199,7 @@ Project "~/ocf/onecent/punch-node", 'punch-node'
 Plugin 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 set t_Co=256
-"set laststatus=2
+set laststatus=2
 
 " syntax error highlighting
 Plugin 'scrooloose/syntastic'
