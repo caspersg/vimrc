@@ -26,11 +26,6 @@ nnoremap <leader>d :bd<cr>
 " vimrc edits
 nnoremap <leader>E :edit $MYVIMRC<cr>
 nnoremap <leader>S :source $MYVIMRC<cr>
-" Press Shift-Space (may not work on your system).
-inoremap <S-Space> <Esc>
-" Try the following so Shift-Space also enters insert mode.
-nnoremap <S-Space> i
-cnoremap <S-Space> <Esc>
 
 "set clipboard=unnamedplus
 set go+=a               " Visual selection automatically copied to the clipboard
