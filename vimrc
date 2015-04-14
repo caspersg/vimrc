@@ -26,8 +26,6 @@ nnoremap <leader>d :bd<cr>
 " vimrc edits
 nnoremap <leader>E :edit $MYVIMRC<cr>
 nnoremap <leader>S :source $MYVIMRC<cr>
-map <C-q> <Esc>
-map! <C-q> <Esc>
 " Press Shift-Space (may not work on your system).
 inoremap <S-Space> <Esc>
 " Try the following so Shift-Space also enters insert mode.
