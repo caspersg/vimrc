@@ -164,7 +164,7 @@ Plugin 'tpope/vim-jdaddy'
 " function text-objects
 Plugin 'vim-scripts/argtextobj.vim'
 " comment out code
-Plugin 'tpope/vim-commentary'
+Plugin 'tomtom/tcomment_vim'
 " entire buffer text object
 Plugin 'kana/vim-textobj-entire'
 
