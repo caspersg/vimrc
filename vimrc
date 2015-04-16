@@ -26,6 +26,7 @@ nnoremap <leader>d :bd<cr>
 " vimrc edits
 nnoremap <leader>E :edit $MYVIMRC<cr>
 nnoremap <leader>S :source $MYVIMRC<cr>
+vnoremap . :norm.<CR>
 
 "set clipboard=unnamedplus
 set go+=a               " Visual selection automatically copied to the clipboard
@@ -35,6 +36,25 @@ nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
+
+nmap <Left> :bp<cr>
+vmap <Left> :bp<cr>
+nmap <Right> :bn<cr>
+vmap <Right> :bn<cr>
+nmap <Up> :ls<cr>
+vmap <Up> :ls<cr>
+nmap <Down> <C-^>
+vmap <Down> <C-^>
+
+nmap <Leader>j :bp<cr>
+vmap <Leader>j :bp<cr>
+nmap <Leader>k :bn<cr>
+vmap <Leader>k :bn<cr>
+nmap <Leader>ls :ls<cr>
+vmap <Leader>ls :ls<cr>
+nmap <Leader>b <C-^>
+vmap <Leader>b <C-^>
+
 
 " show matches
 set showmatch
@@ -176,14 +196,7 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
-nmap <Left> :bp<cr>
-nmap <Right> :bn<cr>
-nmap <Up> :ls<cr>
-nmap <Down> <C-^>
-vmap <Left> :bp<cr>
-vmap <Right> :bn<cr>
-vmap <Up> :ls<cr>
-vmap <Down> <C-^>
+
 
 " project
 Plugin 'amiorin/vim-project'
