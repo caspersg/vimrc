@@ -155,6 +155,8 @@ set ignorecase " Don't be case sensitive "
 set smartcase " If you type a capital letter, be case sensitive "
 set nohlsearch
 
+Plugin 'yegappan/greplace'
+
 Plugin 'kien/ctrlp.vim'
 
 Plugin 'nelstrom/vim-qargs'
