@@ -55,6 +55,7 @@ vmap <Leader>ls :ls<cr>
 nmap <Leader>b <C-^>
 vmap <Leader>b <C-^>
 
+nmap <Leader>P :CtrlPClearAllCaches<cr>
 
 " show matches
 set showmatch
