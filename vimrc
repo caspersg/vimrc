@@ -244,6 +244,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 syntax on
 filetype plugin indent on
+au BufRead,BufNewFile *.pegjs setfiletype javascript
 
 if has('gui_running')
   set guifont=Ubuntu\ Mono\ 12
