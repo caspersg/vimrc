@@ -199,6 +199,7 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
+Plugin 'guns/vim-clojure-static'
 
 
 " project
