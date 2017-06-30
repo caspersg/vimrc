@@ -21,6 +21,7 @@ syntax on
 " custom leader commands
 " write file in normal mode "
 nnoremap <leader>w :w<cr>
+nnoremap <D-s> :w<cr>
 "close buffer
 nnoremap <leader>d :bd<cr>
 " vimrc edits
