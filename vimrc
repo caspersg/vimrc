@@ -224,6 +224,10 @@ Plugin 'scrooloose/syntastic'
 " css colour preview
 Plugin 'ap/vim-css-color'
 
+" go
+Plugin 'fatih/vim-go'
+Plugin 'godoctor/godoctor.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -248,8 +252,8 @@ filetype plugin indent on
 au BufRead,BufNewFile *.pegjs setfiletype javascript
 
 if has('gui_running')
-  set guifont=Ubuntu\ Mono\ 12
-  set anti gfn=Ubuntu\ Mono\ 12,Inconsolata\ 12,\ Envy\ Code\ R\ 10
+  set guifont=mononoki:h16,Ubuntu\ Mono\ 12,Inconsolata\ 12,\ Envy\ Code\ R\ 10
+  set anti gfn=mononoki:h16,Ubuntu\ Mono\ 12,Inconsolata\ 12,\ Envy\ Code\ R\ 10
 endif
 
 colorscheme twilight
