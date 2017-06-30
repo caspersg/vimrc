@@ -80,6 +80,9 @@ set undoreload=10000
 
 set autoindent
 
+" pathogen
+execute pathogen#infect('p_bundle/{}')
+
 " required for vundle
 filetype off
 " set the runtime path to include Vundle and initialize
@@ -228,7 +231,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'ap/vim-css-color'
 
 " go
-Plugin 'fatih/vim-go'
+" Plugin 'fatih/vim-go'
 Plugin 'godoctor/godoctor.vim'
 
 " All of your Plugins must be added before the following line
