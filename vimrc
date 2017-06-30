@@ -207,10 +207,12 @@ Plugin 'amiorin/vim-project'
 let g:project_use_nerdtree = 1
 set rtp+=~/.vim/bundle/vim-project/
 " default starting path (the home directory)
-call project#rc()
+call project#rc("~/project")
 Project "~/ocf/onecent/oct-node", 'oct-node'
 Project "~/ocf/onecent/oct-grails", 'oct-grails'
 Project "~/ocf/onecent/punch-node", 'punch-node'
+Project "~/projects/go/src/github.com/outboundio/server", 'outbound'
+Project "~/projects/zendesk/outbound_client", 'tomate'
 
 " custom statusline
 Plugin 'bling/vim-airline'
