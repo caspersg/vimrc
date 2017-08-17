@@ -26,6 +26,7 @@ nnoremap <leader>r :%s//
 " trying to automatically insert the /c at the end
 " command! -nargs=1 Replace execute "%s/" string(<q-args>) "/c"
 " command! -nargs=1 FW execute "echo" string(<q-args>)
+:set autoread
 
 " font
 set guifont=mononoki:h16,Ubuntu\ Mono\ 12,Inconsolata\ 12,\ Envy\ Code\ R\ 10
@@ -86,6 +87,7 @@ Plug 'jodosha/vim-godebug'
 " deoplete for go
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 " go )
+nnoremap C-. :GoDef<cr>
 
 
 call plug#end()
