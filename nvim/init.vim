@@ -41,6 +41,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-fugitive'
 
 " better incremental search
 Plug 'haya14busa/incsearch.vim'
@@ -61,7 +62,8 @@ nnoremap <C-p> :FZF<CR>
 
 
 " search all files
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
+cnoreabbrev Ack Ack!
 
 " make parens rainbow
 Plug 'luochen1990/rainbow'
@@ -81,6 +83,9 @@ Plug 'bluz71/vim-moonfly-colors'
 
 " go (
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+map <C-.> :GoDef<CR>
+map <C-<> :GoReferrers<CR>
+map <C-,> :GoDefPop<CR>
 Plug 'godoctor/godoctor.vim'
 Plug 'jodosha/vim-godebug'
 
