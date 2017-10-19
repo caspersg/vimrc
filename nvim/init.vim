@@ -57,9 +57,13 @@ map z? <Plug>(incsearch-fuzzy-?)
 " fuzzy file search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" " [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
 " nnoremap <C-p> :Files<cr>
 nnoremap <C-p> :FZF<CR>
-
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>p :Files<CR>
+nmap <Leader>t :Tags<CR>
 
 " search all files
 Plug 'mileszs/ack.vim'
