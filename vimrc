@@ -83,57 +83,47 @@ set autoindent
 " pathogen
 execute pathogen#infect('p_bundle/{}')
 
-" required for vundle
 filetype off
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L9
-" Plugin 'user/L9', {'name': 'newL9'}
+" Plug 'user/L9', {'name': 'newL9'}
 
 " repeat support for other plugins
-Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 
-Plugin 'airblade/vim-gitgutter'
-Plugin 'taglist.vim'
-Plugin 'majutsushi/tagbar'
+Plug 'airblade/vim-gitgutter'
+Plug 'taglist.vim'
+Plug 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
 
 
 " syntax highlighting
-Plugin 'strogonoff/vim-coffee-script'
-Bundle 'lukaszkorecki/CoffeeTags'
-let g:CoffeeAutoTagIncludeVars=1
+" Plug 'strogonoff/vim-coffee-script'
+" Bundle 'lukaszkorecki/CoffeeTags'
+" let g:CoffeeAutoTagIncludeVars=1
 
-Plugin 'mustache/vim-mustache-handlebars'
+Plug 'mustache/vim-mustache-handlebars'
 
-Plugin 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 let g:multi_cursor_use_default_mapping=0
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<A-n>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-Plugin 'inside/vim-search-pulse'
-Plugin 'rking/ag.vim'
+Plug 'inside/vim-search-pulse'
+Plug 'rking/ag.vim'
 " silver searcher
 if executable('ag')
   let g:ackprg = 'ag --column'
@@ -142,7 +132,7 @@ nnoremap \ :Ag
 let g:ag_highlight=1
 
 " incremental search
-Plugin 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch.vim'
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay
@@ -160,42 +150,42 @@ set ignorecase " Don't be case sensitive "
 set smartcase " If you type a capital letter, be case sensitive "
 set nohlsearch
 
-Plugin 'yegappan/greplace'
+Plug 'yegappan/greplace'
 
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 
-Plugin 'nelstrom/vim-qargs'
+Plug 'nelstrom/vim-qargs'
 
-Plugin 'skwp/greplace.vim'
+Plug 'skwp/greplace.vim'
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading'
 
-Plugin 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 let delimitMate_expand_inside_quotes=1
 let delimitMate_quotes = "\" ' `"
 
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'jeetsukumaran/vim-indentwise'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-scripts/camelcasemotion'
-Plugin 'sjl/gundo.vim'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'jeetsukumaran/vim-indentwise'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/camelcasemotion'
+Plug 'sjl/gundo.vim'
 nnoremap <F5> :GundoToggle<CR>
 
 " support custom text objects
-Plugin 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-user'
 
 " change variable style camel/snake
-Plugin 'tpope/vim-abolish'
+Plug 'tpope/vim-abolish'
 " json text-objects
-Plugin 'tpope/vim-jdaddy'
+Plug 'tpope/vim-jdaddy'
 " function text-objects
-Plugin 'vim-scripts/argtextobj.vim'
+Plug 'vim-scripts/argtextobj.vim'
 " comment out code
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 " entire buffer text object
-Plugin 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-entire'
 
-Plugin 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 " Bubble single lines
 nmap <C-Up> [e
 nmap <C-Down> ]e
@@ -203,11 +193,11 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
-Plugin 'guns/vim-clojure-static'
+Plug 'guns/vim-clojure-static'
 
 
 " project
-Plugin 'amiorin/vim-project'
+Plug 'amiorin/vim-project'
 let g:project_use_nerdtree = 1
 set rtp+=~/.vim/bundle/vim-project/
 " default starting path (the home directory)
@@ -219,35 +209,23 @@ Project "~/projects/go/src/github.com/outboundio/server", 'outbound'
 Project "~/projects/zendesk/outbound_client", 'tomate'
 
 " custom statusline
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 set t_Co=256
 set laststatus=2
 
 " syntax error highlighting
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
 " css colour preview
-Plugin 'ap/vim-css-color'
+Plug 'ap/vim-css-color'
 
 " go
-" Plugin 'fatih/vim-go'
-Plugin 'godoctor/godoctor.vim'
+" Plug 'fatih/vim-go'
+Plug 'godoctor/godoctor.vim'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+
+call plug#end()
 
 
 

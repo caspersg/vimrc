@@ -28,6 +28,8 @@ nnoremap <leader>r :%s//
 " command! -nargs=1 FW execute "echo" string(<q-args>)
 :set autoread
 
+nmap <C-,> g;
+
 " font
 set guifont=mononoki:h16,Ubuntu\ Mono\ 12,Inconsolata\ 12,\ Envy\ Code\ R\ 10
 
@@ -83,10 +85,12 @@ let g:deoplete#enable_at_startup = 1
 Plug 'bluz71/vim-moonfly-colors'
 
 
+Plug 'w0rp/ale'
+
 " general )
 
 " go (
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 map <C-.> :GoDef<CR>
 map <C-<> :GoReferrers<CR>
 map <C-,> :GoDefPop<CR>
@@ -95,8 +99,9 @@ Plug 'jodosha/vim-godebug'
 
 " deoplete for go
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+
+let g:go_auto_type_info = 1
 " go )
-nnoremap C-. :GoDef<cr>
 
 
 call plug#end()
