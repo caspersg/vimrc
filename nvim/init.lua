@@ -344,12 +344,14 @@ require("lazy").setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
+        defaults = {
+          -- mappings = {
+          --   i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+          -- },
+          -- sorting_strategy = "descending",
+          -- selection_strategy = "closest",
+        },
+        pickers = {},
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown(),
@@ -372,15 +374,23 @@ require("lazy").setup({
       vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[s]earch [d]iagnostics" })
       vim.keymap.set("n", "<leader>sR", builtin.resume, { desc = "[s]earch [R]esume" })
       vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[s]earch Recent Files ("." for repeat)' })
-      vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+      vim.keymap.set("n", "<leader><leader>", function()
+        builtin.buffers({
+          sort_mru = true,
+          ignore_current_buffer = true,
+        })
+      end, { desc = "[ ] Find existing buffers" })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set("n", "<leader>/", function()
         -- You can pass additional configuration to telescope to change theme, layout, etc.
-        builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-          winblend = 10,
-          previewer = false,
-        }))
+        -- builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+        --   winblend = 10,
+        --   previewer = true,
+        -- }))
+        builtin.current_buffer_fuzzy_find({
+          sorting_strategy = "descending",
+        })
       end, { desc = "[/] Fuzzily search in current buffer" })
 
       -- Also possible to pass additional configuration options.
@@ -389,6 +399,9 @@ require("lazy").setup({
         builtin.live_grep({
           grep_open_files = true,
           prompt_title = "Live Grep in Open Files",
+          -- sorting_strategy = "ascending",
+          sorting_strategy = "descending",
+          selection_strategy = "row",
         })
       end, { desc = "[s]earch [/] in Open Files" })
 
