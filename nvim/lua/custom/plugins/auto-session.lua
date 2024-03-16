@@ -12,7 +12,7 @@ return {
       -- auto_session_last_session_dir = "~/.local/share/nvim/sessions",
       log_level = "error",
       auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-      post_restore_cmds = { change_nvim_tree_dir, "NvimTreeOpen" },
+      post_restore_cmds = { change_nvim_tree_dir }, --[[ , "NvimTreeOpen" }, ]]
       pre_save_cmds = { "NvimTreeClose" },
     })
     vim.keymap.set("n", "<leader>sS", vim.cmd.SearchSession, { desc = "[s]earch [S]ession" })

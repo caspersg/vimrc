@@ -772,6 +772,13 @@ require("lazy").setup({
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
+
+      require("mini.files").setup()
+      vim.keymap.set("n", "<leader>mf", ":lua MiniFiles.open()<CR>", { desc = "[m]mini [f]files" })
+
+      require("mini.jump").setup()
+
+      require("mini.splitjoin").setup()
     end,
   },
 
@@ -865,9 +872,17 @@ require("lazy").setup({
 -- custom keymaps )
 
 -- notes (
--- find
---  file :find *substring>"
---  file leader s f substring
---  buffer :b substring
---  buffer leader space space substring
+--  find
+--    file: :find *substring
+--    file: leader s f substring
+--    buffer: :b substring
+--    buffer: leader space space substring
+--
+--  comment toggle line: gcc
+--  file browser:
+--    open NvimTree: C-n
+--    mini.files: leader m f
+--    telescope files: leader sF
+--
+--  split arguments toggle: gS
 -- notes )
