@@ -15,5 +15,6 @@ return {
       post_restore_cmds = { change_nvim_tree_dir, "NvimTreeOpen" },
       pre_save_cmds = { "NvimTreeClose" },
     })
+    vim.keymap.set("n", "<leader>sS", vim.cmd.SearchSession, { desc = "[s]earch [S]ession" })
   end,
 }

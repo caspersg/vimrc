@@ -851,14 +851,23 @@ require("lazy").setup({
     },
   },
 })
-
--- custom keymaps (
-
-vim.keymap.set("n", "<C-n>", vim.cmd.NvimTreeToggle, { desc = "Toggle Tree" })
-vim.keymap.set("n", "<C-n>", vim.cmd.NvimTreeToggle, { desc = "Toggle Tree" })
-vim.keymap.set("n", "<leader>sS", vim.cmd.SearchSession, { desc = "[s]earch [S]ession" })
-
--- custom keymaps )
 --
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- custom keymaps (
+-- Most keymaps will be defined in the plugin
+
+-- TODO why does <C-.> call NvimTreeToggle ?
+--vim.keymap.set("n", "<C-.>", "<C-o>", {})
+--vim.keymap.set("n", "<C-,>", "<C-i>", {})
+
+-- custom keymaps )
+
+-- notes (
+-- find
+--  file :find *substring>"
+--  file leader s f substring
+--  buffer :b substring
+--  buffer leader space space substring
+-- notes )
