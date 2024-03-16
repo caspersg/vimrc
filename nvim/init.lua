@@ -910,4 +910,8 @@ require("lazy").setup({
 --
 --  split arguments toggle: gS
 --
+--  merge conflicts:
+--    open: leader do
+--    close: leader dc
+--
 -- notes )
