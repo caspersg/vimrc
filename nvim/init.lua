@@ -351,7 +351,11 @@ require("lazy").setup({
           -- sorting_strategy = "descending",
           -- selection_strategy = "closest",
         },
-        pickers = {},
+        pickers = {
+          colorscheme = {
+            enable_preview = true,
+          },
+        },
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown(),
@@ -365,6 +369,7 @@ require("lazy").setup({
 
       -- See `:help telescope.builtin`
       local builtin = require("telescope.builtin")
+
       vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[s]earch [h]elp" })
       vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[s]earch [k]eymaps" })
       vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[s]earch [f]iles" })
