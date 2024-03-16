@@ -370,7 +370,7 @@ require("lazy").setup({
       vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[s]earch current [w]ord" })
       vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[s]earch by [g]rep" })
       vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[s]earch [d]iagnostics" })
-      vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[s]earch [r]esume" })
+      vim.keymap.set("n", "<leader>sR", builtin.resume, { desc = "[s]earch [R]esume" })
       vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[s]earch Recent Files ("." for repeat)' })
       vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
@@ -872,17 +872,29 @@ require("lazy").setup({
 -- custom keymaps )
 
 -- notes (
---  find
+--  find:
 --    file: :find *substring
 --    file: leader s f substring
 --    buffer: :b substring
---    buffer: leader space space substring
+--    buffer: leader space substring
+--
+--  search:
+--    grep in buffer: leader /
+--    grep in files: leader sg
+--    search word: leader sw
+--
+--  search replace:
+--    spectre toggle: leader sr
+--    visual search: leader sv
+--    search word current file: leader sc
 --
 --  comment toggle line: gcc
+--
 --  file browser:
 --    open NvimTree: C-n
 --    mini.files: leader m f
 --    telescope files: leader sF
 --
 --  split arguments toggle: gS
+--
 -- notes )
