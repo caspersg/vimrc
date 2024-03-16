@@ -399,9 +399,8 @@ require("lazy").setup({
         builtin.live_grep({
           grep_open_files = true,
           prompt_title = "Live Grep in Open Files",
-          -- sorting_strategy = "ascending",
-          sorting_strategy = "descending",
-          selection_strategy = "row",
+          -- sorting_strategy = "descending",
+          -- selection_strategy = "row",
         })
       end, { desc = "[s]earch [/] in Open Files" })
 
@@ -892,7 +891,8 @@ require("lazy").setup({
 --    buffer: leader space substring
 --
 --  search:
---    grep in buffer: leader /
+--    fuzzy in buffer: leader /
+--    grep in buffer: leader s /
 --    grep in files: leader sg
 --    search word: leader sw
 --
