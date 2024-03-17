@@ -363,12 +363,16 @@ require("lazy").setup({
           ["ui-select"] = {
             require("telescope.themes").get_dropdown(),
           },
+          undo = {
+            -- telescope-undo.nvim config, see below
+          },
         },
       })
 
       -- Enable telescope extensions, if they are installed
       pcall(require("telescope").load_extension, "fzf")
       pcall(require("telescope").load_extension, "ui-select")
+      pcall(require("telescope").load_extension, "undo")
 
       -- See `:help telescope.builtin`
       local builtin = require("telescope.builtin")
@@ -985,5 +989,8 @@ vim.keymap.set("n", "<leader>md", ":delm! | delm A-Z<CR>", { desc = "[m]arks [d]
 --
 --  git:
 --    git status: :G
+--
+--  undo:
+--    show undo history: leader u
 --
 -- notes )
