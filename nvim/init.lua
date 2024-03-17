@@ -983,4 +983,7 @@ vim.keymap.set("n", "<leader>md", ":delm! | delm A-Z<CR>", { desc = "[m]arks [d]
 --    goto: '
 --    delete all: leader md
 --
+--  git:
+--    git status: :G
+--
 -- notes )
