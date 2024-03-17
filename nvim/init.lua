@@ -147,6 +147,8 @@ vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
+-- Mark the 100th column with a line
+vim.opt.colorcolumn = "120"
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
@@ -220,8 +222,10 @@ vim.opt.rtp:prepend(lazypath)
 --  To update plugins, you can run
 --    :Lazy update
 --
+-- defaults = { lazy = true },
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
+
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 
@@ -876,6 +880,9 @@ require("lazy").setup({
         "python",
         "java",
         "go",
+        "vimdoc",
+        "javascript",
+        "typescript",
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
@@ -947,6 +954,7 @@ require("lazy").setup({
 --vim.keymap.set("n", "<C-.>", "<C-o>", {})
 --vim.keymap.set("n", "<C-,>", "<C-i>", {})
 vim.keymap.set("n", "<leader>md", ":delm! | delm A-Z<CR>", { desc = "[m]arks [d]elete all" })
+vim.keymap.set("x", "<leader>p", '"_dP', { desc = "[p]aste keep register", noremap = true })
 
 -- custom keymaps )
 
@@ -992,5 +1000,7 @@ vim.keymap.set("n", "<leader>md", ":delm! | delm A-Z<CR>", { desc = "[m]arks [d]
 --
 --  undo:
 --    show undo history: leader u
+--
+--  column vertical visual: C-q
 --
 -- notes )
