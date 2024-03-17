@@ -726,6 +726,60 @@ require("lazy").setup({
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "path" },
+          { name = "copilot" },
+        },
+        formatting = {
+          expandable_indicator = false,
+          fields = { "kind", "abbr", "menu" },
+          format = function(entry, vim_item)
+            -- Kind icons
+            --   פּ ﯟ   some other good icons
+            local kind_icons = {
+              Text = "",
+              Method = "m",
+              Function = "",
+              Constructor = "",
+              Field = "",
+              Variable = "",
+              Class = "",
+              Interface = "",
+              Module = "",
+              Property = "",
+              Unit = "",
+              Value = "",
+              Enum = "",
+              Keyword = "",
+              Snippet = "",
+              Color = "",
+              File = "",
+              Reference = "",
+              Folder = "",
+              EnumMember = "",
+              Constant = "",
+              Struct = "",
+              Event = "",
+              Operator = "",
+              TypeParameter = "",
+              Copilot = "",
+            }
+            vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+            -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+            vim_item.menu = ({
+              nvim_lsp = "[LSP]",
+              luasnip = "[Snippet]",
+              buffer = "[Buffer]",
+              path = "[Path]",
+              copilot = "[Copilot]",
+            })[entry.source.name]
+            return vim_item
+          end,
+          -- expandable_indicator = true,
+          -- fields = { cmp.ItemField.Kind, cmp.ItemField.Abbr, cmp.ItemField.Menu },
+          -- format = require("lspkind").cmp_format({
+          --   mode = "symbol",
+          --   max_width = 50,
+          --   symbol_map = { Copilot = "" },
+          -- }),
         },
       })
     end,
@@ -914,7 +968,7 @@ vim.keymap.set("n", "<leader>md", ":delm! | delm A-Z<CR>", { desc = "[m]arks [d]
 --
 --  file browser:
 --    open NvimTree: C-n
---    mini.files: leader m f
+--    mini.files: leader mf
 --    telescope files: leader sF
 --
 --  split arguments toggle: gS
@@ -922,5 +976,11 @@ vim.keymap.set("n", "<leader>md", ":delm! | delm A-Z<CR>", { desc = "[m]arks [d]
 --  merge conflicts:
 --    open: leader do
 --    close: leader dc
+--
+--  marks:
+--    local: m a
+--    global: m A
+--    goto: '
+--    delete all: leader md
 --
 -- notes )
