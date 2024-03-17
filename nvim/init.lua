@@ -888,6 +888,7 @@ require("lazy").setup({
 -- TODO why does <C-.> call NvimTreeToggle ?
 --vim.keymap.set("n", "<C-.>", "<C-o>", {})
 --vim.keymap.set("n", "<C-,>", "<C-i>", {})
+vim.keymap.set("n", "<leader>md", ":delm! | delm A-Z<CR>", { desc = "[m]arks [d]elete all" })
 
 -- custom keymaps )
 
