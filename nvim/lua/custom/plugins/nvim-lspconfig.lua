@@ -1,4 +1,6 @@
-return { -- LSP Configuration & Plugins
+-- LSP Configuration & Plugins
+--
+return {
   "neovim/nvim-lspconfig",
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for neovim
@@ -137,9 +139,9 @@ return { -- LSP Configuration & Plugins
     local servers = {
       ruby_ls = {},
       pyright = {},
-      -- java_language_server = {},
+      -- java_language_server = {}, using lua/custom/plugins/java.lua instead
       -- clangd = {},
-      gopls = {},
+      -- gopls = {},
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
       --
