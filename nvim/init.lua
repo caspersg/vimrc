@@ -975,6 +975,8 @@ vim.keymap.set("x", "<leader>p", '"_dP', { desc = "[p]aste keep register", norem
 --    spectre toggle: leader sr
 --    visual search: leader sv
 --    search word current file: leader sc
+--    line: :s/old/new/gc
+--    file: :%s/old/new/gc
 --
 --  comment toggle line: gcc
 --
@@ -982,6 +984,8 @@ vim.keymap.set("x", "<leader>p", '"_dP', { desc = "[p]aste keep register", norem
 --    open NvimTree: C-n
 --    mini.files: leader mf
 --    telescope files: leader sF
+--
+--  new buffer: :enew
 --
 --  split arguments toggle: gS
 --
