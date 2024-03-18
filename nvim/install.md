@@ -46,6 +46,25 @@ vim-fugitive
 caspersg/shell/git_aliases.sh
 diffview.nvm
 
+# CAPS to ctrl and esc
+## xcape
+https://gist.github.com/tanyuan/55bca522bf50363ae4573d4bdcf06e2e?permalink_comment_id=4271644
+xcape not on macos
+
+## hammerspoon
+https://github.com/jasonrudolph/ControlEscape.spoon
+```
+mkdir -p ~/.hammerspoon/Spoons
+
+git clone https://github.com/jasonrudolph/ControlEscape.spoon.git ~/.hammerspoon/Spoons/ControlEscape.spoon
+
+cd ~/.hammerspoon/Spoons/ControlEscape.spoon
+
+script/setup
+```
+
+works!
+
 # TODO
 - [x] better theme
 -- tokyodark
