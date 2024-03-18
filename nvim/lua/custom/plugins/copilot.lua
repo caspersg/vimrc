@@ -1,9 +1,10 @@
 return {
-  "zbirenbaum/copilot.lua",
-  config = function()
-    require("copilot").setup({
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-    })
-  end,
+  -- TODO: enable copilot
+  --   "zbirenbaum/copilot.lua",
+  --   config = function()
+  --     require("copilot").setup({
+  --       suggestion = { enabled = false },
+  --       panel = { enabled = false },
+  --     })
+  --   end,
 }
