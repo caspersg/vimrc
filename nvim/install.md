@@ -49,7 +49,8 @@ diffview.nvm
 # TODO
 - [x] better theme
 -- tokyodark
-- [ ] ruby_lsp
+- [x] ruby lsp 
+-- solargraph has goto definition
 - [ ] rebuild ruby env?
 - [ ] python lsp
 - [ ] learn vim registers
