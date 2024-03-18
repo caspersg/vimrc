@@ -140,6 +140,8 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
+-- show all whitespace
+-- vim.opt.listchars = { eol = '$', space = '.', multispace = '.', tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
@@ -256,6 +258,29 @@ require('lazy').setup({
       },
     },
   },
+  {
+    'HiPhish/rainbow-delimiters.nvim',
+  },
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    opts = {},
+    config = function()
+      require('ibl').setup()
+      local highlight = {
+        'CursorColumn',
+        'Whitespace',
+      }
+      require('ibl').setup {
+        indent = { highlight = highlight, char = '' },
+        whitespace = {
+          highlight = highlight,
+          remove_blankline_trail = false,
+        },
+        scope = { enabled = false },
+      }
+    end,
+  },
 
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
@@ -276,11 +301,12 @@ require('lazy').setup({
   },
   {
     'tiagovla/tokyodark.nvim',
+    priority = 1000,
     opts = {
       -- custom options here
     },
     config = function(_, opts)
-      -- require("tokyodark").setup(opts) -- calling setup is optional
+      -- require('tokyodark').setup(opts) -- calling setup is optional
       -- vim.cmd [[colorscheme tokyodark]]
     end,
   },
