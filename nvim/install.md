@@ -51,6 +51,8 @@ diffview.nvm
 -- tokyodark
 - [x] ruby lsp 
 -- solargraph has goto definition
+- [x] neogit 
+-- telescope, diffview
 - [ ] rebuild ruby env?
 - [ ] python lsp
 - [ ] learn vim registers

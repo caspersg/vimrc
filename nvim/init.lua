@@ -282,11 +282,42 @@ require('lazy').setup({
     config = function(_, opts)
       -- require("tokyodark").setup(opts) -- calling setup is optional
       -- vim.cmd [[colorscheme tokyodark]]
-      vim.cmd.colorscheme 'tokyodark'
     end,
   },
   {
     'rebelot/kanagawa.nvim',
+    priority = 1000,
+  },
+  {
+    'ellisonleao/gruvbox.nvim',
+    priority = 1000,
+  },
+  {
+    'navarasu/onedark.nvim',
+    priority = 1000,
+  },
+  {
+    'savq/melange-nvim',
+    priority = 1000,
+  },
+  {
+    'Mofiqul/dracula.nvim',
+    priority = 1000,
+  },
+  {
+    'nyoom-engineering/oxocarbon.nvim',
+    priority = 1000,
+  },
+  {
+    'EdenEast/nightfox.nvim',
+    priority = 1000,
+  },
+  {
+    'marko-cerovac/material.nvim',
+    priority = 1000,
+  },
+  {
+    'Mofiqul/vscode.nvim',
     priority = 1000,
   },
 
@@ -346,3 +377,6 @@ require('lazy').setup({
 
 -- run all my other configs
 require 'custom/config/keymaps'
+
+-- set theme
+vim.cmd.colorscheme 'tokyodark'
