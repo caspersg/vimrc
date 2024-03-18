@@ -38,6 +38,8 @@ gone back to iterm
 
 # configure neovim
 
+brew install ripgrep fd
+
 
 # setup git
 vim-fugitive
