@@ -72,6 +72,7 @@ works!
 -- solargraph has goto definition
 - [x] neogit 
 -- telescope, diffview
+- [x] caps as ctrl and esc
 - [ ] rebuild ruby env?
 - [ ] python lsp
 - [ ] learn vim registers

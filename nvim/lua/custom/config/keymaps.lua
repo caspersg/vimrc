@@ -24,9 +24,21 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 -- don't enter special mode
 vim.api.nvim_set_keymap('n', 'Q', '<Nop>', { noremap = true })
 
+vim.keymap.set('c', '<Esc>', '<C-c>', { desc = 'Exit command mode without running command' })
+
 -- custom keymaps )
 
 -- notes (
+--  jump:
+--    alternate file: C-^
+--    back: C-o
+--    forward: C-i
+--  marks:
+--    local: m a
+--    global: m A
+--    goto: '
+--    delete all: leader md
+--
 --  lsp:
 --    goto: leader g
 --    code action: leader ca
@@ -71,12 +83,6 @@ vim.api.nvim_set_keymap('n', 'Q', '<Nop>', { noremap = true })
 --  merge conflicts:
 --    open: leader do
 --    close: leader dc
---
---  marks:
---    local: m a
---    global: m A
---    goto: '
---    delete all: leader md
 --
 --  git:
 --    git status: :G
