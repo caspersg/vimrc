@@ -31,12 +31,21 @@ bold_italic_font auto
 
 font_size 16.0
 
+scrolling and buffers are weird
+
 ## iterm
-gone back to iterm
+gone back to iterm2
+fullscreen mode:
+- disable macos animations
+- iterm2 disable native fullscreen
+install Github dark color scheme
+use Mononoki Nerd Font Mono
+ignore cmd-P
 
 ## windows terminal ubuntu WSL
 
 # configure neovim
+follow https://github.com/nvim-lua/kickstart.nvim
 
 brew install ripgrep fd
 
@@ -45,6 +54,7 @@ brew install ripgrep fd
 vim-fugitive
 caspersg/shell/git_aliases.sh
 diffview.nvm
+neogit
 
 # CAPS to ctrl and esc
 ## xcape
@@ -70,13 +80,17 @@ works!
 -- tokyodark
 - [x] ruby lsp 
 -- solargraph has goto definition
+-- [ ] goto def across files
 - [x] neogit 
 -- telescope, diffview
 - [x] caps as ctrl and esc
+- [x] install chatgpt
+-- [ ] try out features
+- [ ] spelling plugin?
 - [ ] rebuild ruby env?
 - [ ] python lsp
 - [ ] learn vim registers
-- [ ] chatgpt
+- [ ] debugger
 
 
 # testing

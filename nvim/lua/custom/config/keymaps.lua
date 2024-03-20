@@ -2,6 +2,7 @@
 -- Most keymaps will be defined in the plugin
 
 -- TODO why does <C-.> call NvimTreeToggle ?
+-- just something weird in windows WSl
 --vim.keymap.set("n", "<C-.>", "<C-o>", {})
 --vim.keymap.set("n", "<C-,>", "<C-i>", {})
 
@@ -67,7 +68,7 @@ vim.keymap.set('c', '<Esc>', '<C-c>', { desc = 'Exit command mode without runnin
 --    line: :s/old/new/gc
 --    file: :%s/old/new/gc
 --
---  comment toggle line: gcc
+-- comment toggle line: gcc
 --
 --  file browser:
 --    open NvimTree: C-n
@@ -85,11 +86,19 @@ vim.keymap.set('c', '<Esc>', '<C-c>', { desc = 'Exit command mode without runnin
 --    close: leader dc
 --
 --  git:
---    git status: :G
+--    git: :G
+--    git pull: :G p p
+--    git checkout branch: :G b l
+--    git log: :G l l
+--    git file log: leader s t bcommits
 --
 --  undo:
 --    show undo history: leader u
 --
 --  column vertical visual: C-q
+--
+--  scroll:
+--    up: C-u or Cy
+--    down: C-d or C-e
 --
 -- notes )
