@@ -81,6 +81,10 @@ vim.keymap.set('c', '<Esc>', '<C-c>', { desc = 'Exit command mode without runnin
 --
 --  split arguments toggle: gS
 --
+--  diff:
+--    diff open windows: :windo diffthis
+--    close diff: :windo diffoff
+--
 --  merge conflicts:
 --    open: leader do
 --    close: leader dc

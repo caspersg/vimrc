@@ -75,6 +75,10 @@ script/setup
 
 works!
 
+# open links in neovim from iterm2
+
+https://gist.github.com/rpapallas/31dfdf0626d078a357fccd46cdf6eafd
+
 # TODO
 - [x] better theme
 -- tokyodark
