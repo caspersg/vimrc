@@ -79,6 +79,13 @@ works!
 
 https://gist.github.com/rpapallas/31dfdf0626d078a357fccd46cdf6eafd
 
+# ruby debugger
+nvim-dap
+nvim-dap-ui
+nvim-dap-ruby
+
+bundle add readapt --group "development, test"
+
 # TODO
 - [x] better theme
 -- tokyodark
