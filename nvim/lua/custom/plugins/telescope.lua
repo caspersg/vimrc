@@ -54,6 +54,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
         -- },
         -- sorting_strategy = "descending",
         -- selection_strategy = "closest",
+        wrap_results = true,
+        layout_config = {
+          horizontal = { width = 0.95, height = 0.95, preview_width = 80 },
+        },
       },
       pickers = {
         colorscheme = {

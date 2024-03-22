@@ -84,24 +84,31 @@ nvim-dap
 nvim-dap-ui
 nvim-dap-ruby
 
-bundle add readapt --group "development, test"
+## not needed
+<!-- bundle add readapt --group "development, test" -->
+<!-- gem install readapt -->
 
 # TODO
 - [x] better theme
 -- tokyodark
 - [x] ruby lsp 
 -- solargraph has goto definition
--- [ ] goto def across files
+-- [ ] goto def across files.
+--- works for some constants
 - [x] neogit 
 -- telescope, diffview
 - [x] caps as ctrl and esc
 - [x] install chatgpt
 -- [ ] try out features
+- [x] debugger
 - [ ] spelling plugin?
 - [ ] rebuild ruby env?
 - [ ] python lsp
+-- installed
+- [ ] java lsp
+-- installed
 - [ ] learn vim registers
-- [ ] debugger
+- [x] learn vim marks
 
 
 # testing
