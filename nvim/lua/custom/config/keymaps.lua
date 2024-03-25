@@ -106,7 +106,7 @@ vim.keymap.set('c', '<Esc>', '<C-c>', { desc = 'Exit command mode without runnin
 --    down: C-d or C-e
 --
 --  debug:
---    toggle debug views: leader dt
+--    toggle debug views: leader td
 --    toggle breakpoint: leader db
 --    start continue: leader dc
 --    start continue: F9

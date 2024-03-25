@@ -41,9 +41,9 @@ return {
       },
     }
 
-    vim.keymap.set('n', '<leader>dt', function()
+    vim.keymap.set('n', '<leader>td', function()
       require('dapui').toggle()
-    end, { desc = '[d]ebug [t]oggle' })
+    end, { desc = '[t]oggle [d]ebug' })
     vim.keymap.set('n', '<leader>dr', ':lua require("dapui").open({reset = true})<CR>', { desc = '[d]ebug [r]eset UI' })
     vim.keymap.set('n', '<leader>dl', ':lua require("dap").run_last()<CR>', { desc = '[d]ebug [l]ast' })
     vim.keymap.set('n', '<leader>db', ':DapToggleBreakpoint<CR>', { desc = '[d]ebug toggle [b]reakpoint' })
