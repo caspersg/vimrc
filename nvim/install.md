@@ -84,7 +84,7 @@ nvim-dap
 nvim-dap-ui
 nvim-dap-ruby
 
-## not needed
+# not needed
 <!-- bundle add readapt --group "development, test" -->
 <!-- gem install readapt -->
 
@@ -108,7 +108,10 @@ nvim-dap-ruby
 - [ ] java lsp
 -- installed
 - [ ] learn vim registers
+- [ ] learn jumplists, changelists, and taglists
 - [x] learn vim marks
+- [ ] profile neovim performance
+- [ ] look through https://github.com/rockerBOO/awesome-neovim
 
 
 # testing
