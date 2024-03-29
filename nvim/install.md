@@ -75,6 +75,13 @@ script/setup
 
 works!
 
+## windows
+https://vim.fandom.com/wiki/Map_caps_lock_to_escape_in_Windows
+the "Steve Losh" option, saved in scripts/
+
+compile to exe
+add link to startup dir
+
 # open links in neovim from iterm2
 
 https://gist.github.com/rpapallas/31dfdf0626d078a357fccd46cdf6eafd
