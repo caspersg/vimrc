@@ -77,7 +77,7 @@ works!
 
 ## windows
 https://vim.fandom.com/wiki/Map_caps_lock_to_escape_in_Windows
-the "Steve Losh" option, saved in scripts/
+the "fwompner" option, saved in scripts/
 
 compile to exe
 add link to startup dir
