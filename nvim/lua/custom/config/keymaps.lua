@@ -27,6 +27,8 @@ vim.api.nvim_set_keymap("n", "Q", "<Nop>", { noremap = true })
 
 vim.keymap.set("c", "<Esc>", "<C-c>", { desc = "Exit command mode without running command" })
 
+vim.keymap.set("n", "<leader>cs", "z=", { desc = "[c]ode [s]pell check fix" })
+
 -- custom keymaps )
 
 -- notes (
@@ -115,6 +117,10 @@ vim.keymap.set("c", "<Esc>", "<C-c>", { desc = "Exit command mode without runnin
 --    step out: F12
 --
 --  shell toggle: C-\
+--
+--  spell check:
+--    fix under cursor: z=
+--    fix under cursor: leader cs
 
 --
 -- notes )
