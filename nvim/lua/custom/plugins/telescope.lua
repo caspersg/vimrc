@@ -130,5 +130,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[s]earch [n]eovim files' })
+
+    vim.keymap.set('n', '<leader>sm', builtin.marks, { desc = '[s]earch [m]arks' })
   end,
 }

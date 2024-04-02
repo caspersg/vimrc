@@ -1,9 +1,9 @@
 return {
-  "chentoast/marks.nvim",
+  'chentoast/marks.nvim',
   config = function()
-    require("marks").setup({
+    require('marks').setup {
       -- just use the built in mappings
-      default_mappings = false,
-    })
+      default_mappings = true,
+    }
   end,
 }

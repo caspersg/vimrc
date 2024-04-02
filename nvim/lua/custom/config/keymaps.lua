@@ -6,7 +6,7 @@
 --vim.keymap.set("n", "<C-.>", "<C-o>", {})
 --vim.keymap.set("n", "<C-,>", "<C-i>", {})
 
-vim.keymap.set('n', '<leader>md', ':delm! | delm A-Z<CR>', { desc = '[m]arks [d]elete all' })
+vim.keymap.set('n', '<leader>mda', ':delm! | delm A-Z<CR>', { desc = '[m]arks [d]elete [a]ll' })
 vim.keymap.set('x', '<leader>p', '"_dP', { desc = '[p]aste keep register', noremap = true })
 vim.keymap.set('n', '<leader>bd', ':bd<CR>', { desc = '[b]uffer [d]elete' })
 vim.keymap.set('n', '<leader>bn', ':enew<CR>', { desc = '[b]uffer [n]ew' })
