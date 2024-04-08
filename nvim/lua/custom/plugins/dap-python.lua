@@ -14,9 +14,9 @@ return {
     -- local dap_python = "$XDG_DATA_HOME/nvim/mason/packages/venv/bin/python"
     require("dap-python").setup(python_bin)
     require("dap-python").test_runner = "pytest"
-    vim.keymap.set({ "n", "v" }, "<Leader>dt", function()
-      require("dap-python").test_method()
-    end)
+    -- vim.keymap.set({ "n", "v" }, "<Leader>dt", function()
+    --   require("dap-python").test_method()
+    -- end)
 
     -- manual steps
     -- mkdir .virtualenvs

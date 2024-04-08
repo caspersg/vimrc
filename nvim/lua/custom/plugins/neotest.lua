@@ -1,4 +1,32 @@
 return {
+  "nvim-neotest/neotest",
+  dependencies = {
+    "nvim-neotest/nvim-nio",
+    "nvim-lua/plenary.nvim",
+    "antoinemadec/FixCursorHold.nvim",
+    "nvim-treesitter/nvim-treesitter",
+    -- adapters
+    "nvim-neotest/neotest-python",
+  },
+  config = function()
+    local nt = require("neotest")
+    nt.setup({
+      adapters = {
+        require("neotest-python"),
+      },
+    })
+    vim.keymap.set("n", "<leader>rtf", function()
+      nt.run.run(vim.fn.expand("%"))
+    end, { desc = "[r]un [t]est current [f]ile" })
+    vim.keymap.set("n", "<leader>rtn", function()
+      nt.run.run()
+    end, { desc = "[r]un [t]est [n]earest" })
+    vim.keymap.set("n", "<leader>rtd", function()
+      nt.run.run({ strategy = "dap" })
+    end, { desc = "[r]un [t]est [d]ebug nearest" })
+  end,
+
+  -- trying and failing for ruby
   --   'nvim-neotest/neotest',
   --   dependencies = {
   --     'nvim-neotest/nvim-nio',
