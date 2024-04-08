@@ -11,7 +11,6 @@ return {
     --   return "~/.pyenv/shims/python"
     -- end
 
-    local dap = require("dap")
     -- local dap_python = "$XDG_DATA_HOME/nvim/mason/packages/venv/bin/python"
     require("dap-python").setup(python_bin)
     require("dap-python").test_runner = "pytest"
@@ -24,7 +23,16 @@ return {
     -- cd .virtualenvs
     -- python -m venv debugpy
     -- debugpy/bin/python -m pip install debugpy
-    -- python -m pip install pytest
+    -- debugpy/bin/python -m pip install pytest
+    require("dap").configurations.python = {
+      {
+        type = "python",
+        request = "launch",
+        name = "Debug Tests",
+        module = "pytest",
+        args = { "tests" },
+      },
+    }
 
     -- require("dap-python").setup("~/.pyenv/shims/python", {
     --   pythonPath = python_bin,
