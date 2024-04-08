@@ -141,8 +141,10 @@ return {
       solargraph = {},
       ruby_ls = {},
       rubocop = {},
+
       -- Python
       pyright = {},
+      debugpy = {},
       ruff = {},
       ruff_lsp = {},
 
