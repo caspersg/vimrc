@@ -1,9 +1,9 @@
 return {
-  'mfussenegger/nvim-dap',
+  "suketa/nvim-dap-ruby",
   dependencies = {
-    'suketa/nvim-dap-ruby',
+    "mfussenegger/nvim-dap",
   },
   config = function()
-    require('dap-ruby').setup()
+    require("dap-ruby").setup()
   end,
 }

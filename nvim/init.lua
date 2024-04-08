@@ -162,7 +162,7 @@ vim.opt.scrolloff = 10
 
 -- spelling spell check
 vim.opt.spelllang = "en_us"
-vim.opt.spell = true
+vim.opt.spell = false
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
