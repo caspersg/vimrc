@@ -4,27 +4,27 @@ return {
     "mfussenegger/nvim-dap",
   },
   config = function()
-    local python_bin = vim.fn.expand("$HOME") .. "/.pyenv/shims/python"
+    local python_bin = "~/.virtualenvs/debugpy/bin/python" -- vim.fn.expand("$HOME") .. "/.pyenv/shims/python"
 
     -- require("dap-python").setup("~/.pyenv/shims/python")
     -- require("dap-python").resolve_python = function()
     --   return "~/.pyenv/shims/python"
     -- end
 
-    require("dap-python").setup()
     local dap = require("dap")
     -- local dap_python = "$XDG_DATA_HOME/nvim/mason/packages/venv/bin/python"
-    local dap_python = python_bin
-    require("dap-python").setup(dap_python)
+    require("dap-python").setup(python_bin)
     require("dap-python").test_runner = "pytest"
     vim.keymap.set({ "n", "v" }, "<Leader>dt", function()
       require("dap-python").test_method()
     end)
 
     -- manual steps
-    -- cd ~/.local/share/nvim/mason/packages/debugpy/
-    -- source venv/bin/activate
-    -- (venv) python -m pip install pytest
+    -- mkdir .virtualenvs
+    -- cd .virtualenvs
+    -- python -m venv debugpy
+    -- debugpy/bin/python -m pip install debugpy
+    -- python -m pip install pytest
 
     -- require("dap-python").setup("~/.pyenv/shims/python", {
     --   pythonPath = python_bin,
