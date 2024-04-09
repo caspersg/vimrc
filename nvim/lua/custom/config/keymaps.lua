@@ -6,28 +6,31 @@
 --vim.keymap.set("n", "<C-.>", "<C-o>", {})
 --vim.keymap.set("n", "<C-,>", "<C-i>", {})
 
-vim.keymap.set('n', '<leader>mda', ':delm! | delm A-Z<CR>', { desc = '[m]arks [d]elete [a]ll' })
-vim.keymap.set('x', '<leader>p', '"_dP', { desc = '[p]aste keep register', noremap = true })
-vim.keymap.set('n', '<leader>bd', ':bd<CR>', { desc = '[b]uffer [d]elete' })
-vim.keymap.set('n', '<leader>bn', ':enew<CR>', { desc = '[b]uffer [n]ew' })
+vim.keymap.set("n", "<leader>mda", ":delm! | delm A-Z<CR>", { desc = "[m]arks [d]elete [a]ll" })
+vim.keymap.set("x", "<leader>p", '"_dP', { desc = "[p]aste keep register", noremap = true })
+vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "[b]uffer [d]elete" })
+vim.keymap.set("n", "<leader>bfd", ":bd!<CR>", { desc = "[b]uffer [f]orce [d]elete " })
+vim.keymap.set("n", "<leader>bn", ":bn<CR>", { desc = "[b]uffer [n]ext" })
+vim.keymap.set("n", "<leader>bp", ":bp<CR>", { desc = "[b]uffer [p]previous" })
+vim.keymap.set("n", "<leader>ba", ":enew<CR>", { desc = "[b]uffer [a]ppend" })
 
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'move visual block up' })
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'move visual block down' })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "move visual block up" })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "move visual block down" })
 
-vim.keymap.set('n', 'J', 'mzJ`z', { desc = 'keep cursor position when joining lines' })
+vim.keymap.set("n", "J", "mzJ`z", { desc = "keep cursor position when joining lines" })
 
 -- keep the cursor in the middle (
-vim.keymap.set('n', '<C-d>', '<C-d>zz')
-vim.keymap.set('n', '<C-u>', '<C-u>zz')
-vim.keymap.set('n', 'n', 'nzzzv')
-vim.keymap.set('n', 'N', 'Nzzzv')
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 -- )
 -- don't enter special mode
-vim.api.nvim_set_keymap('n', 'Q', '<Nop>', { noremap = true })
+vim.api.nvim_set_keymap("n", "Q", "<Nop>", { noremap = true })
 
-vim.keymap.set('c', '<Esc>', '<C-c>', { desc = 'Exit command mode without running command' })
+vim.keymap.set("c", "<Esc>", "<C-c>", { desc = "Exit command mode without running command" })
 
-vim.keymap.set('n', '<leader>cs', 'z=', { desc = '[c]ode [s]pell check fix' })
+vim.keymap.set("n", "<leader>cs", "z=", { desc = "[c]ode [s]pell check fix" })
 
 -- custom keymaps )
 
