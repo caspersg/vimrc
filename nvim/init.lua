@@ -164,6 +164,13 @@ vim.opt.scrolloff = 10
 vim.opt.spelllang = "en_us"
 vim.opt.spell = false
 
+-- auto reload buffer
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
