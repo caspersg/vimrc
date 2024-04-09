@@ -14,7 +14,15 @@ return {
       auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
       post_restore_cmds = { change_nvim_tree_dir }, --[[ , "NvimTreeOpen" }, ]]
       pre_save_cmds = { "NvimTreeClose" },
+      session_lens = {
+        -- If load_on_setup is set to false, one needs to eventually call `require("auto-session").setup_session_lens()` if they want to use session-lens.
+        buftypes_to_ignore = {}, -- list of buffer types what should not be deleted from current session
+        load_on_setup = true,
+        theme_conf = { border = true },
+        previewer = false,
+      },
     })
-    vim.keymap.set("n", "<leader>sS", vim.cmd.SearchSession, { desc = "[s]earch [S]ession" })
+    vim.keymap.set("n", "<leader>S", require("auto-session.session-lens").search_session, { desc = "search [S]ession" })
+    -- C-s when view is open to switch to alternate
   end,
 }
