@@ -362,6 +362,20 @@ require("lazy").setup({
     "Mofiqul/vscode.nvim",
     priority = 1000,
   },
+  {
+    "catppuccin/nvim",
+    priority = 1000,
+    name = "catppuccin",
+    config = function()
+      require("catppuccin").setup({
+        integrations = {
+          semantic_tokens = true,
+        },
+      })
+    end,
+  },
+  { "dasupradyumna/midnight.nvim", lazy = false, priority = 1000 },
+  { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
 
   -- Highlight todo, notes, etc in comments
   {
@@ -421,4 +435,21 @@ require("lazy").setup({
 require("custom/config/keymaps")
 
 -- set theme
+--
+-- example code to show sematnic highlighting
+-- function(ab)
+--   ab.hi()
+--   local ac = ""
+--   ac.len()
+-- end
+
+-- semantic highlighting
+-- vim.api.nvim_create_autocmd("ColorScheme", {
+--   callback = function()
+--     vim.api.nvim_set_hl(0, "@lsp.type.parameter", { fg = "Purple" })
+--     vim.api.nvim_set_hl(0, "@lsp.mod.readonly", { italic = true })
+--   end,
+-- })
+-- has semantic highlighting
+-- vim.cmd.colorscheme("catppuccin")
 vim.cmd.colorscheme("tokyodark")
