@@ -13,6 +13,7 @@ return {
   -- Then, because we use the `config` key, the configuration only runs
   -- after the plugin has been loaded:
   --  config = function() ... end
+  --
 
   -- Useful plugin to show you pending keybinds.
   "folke/which-key.nvim",
@@ -27,6 +28,10 @@ return {
       ["<leader>r"] = { name = "[r]ename", _ = "which_key_ignore" },
       ["<leader>s"] = { name = "[s]earch", _ = "which_key_ignore" },
       ["<leader>w"] = { name = "[w]orkspace", _ = "which_key_ignore" },
+      ["<leader>b"] = { name = "[b]uffer", _ = "which_key_ignore" },
+      ["<leader>m"] = { name = "[m]arks", _ = "which_key_ignore" },
+      ["<leader>t"] = { name = "[t]oggle", _ = "which_key_ignore" },
+      ["<leader>cg"] = { name = "[c]ode chat[g]pt", _ = "which_key_ignore" },
     })
   end,
 }
