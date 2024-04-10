@@ -28,6 +28,8 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- don't enter special mode
 vim.api.nvim_set_keymap("n", "Q", "<Nop>", { noremap = true })
 
+vim.keymap.set("n", "<C-a>", "q:", { desc = "Command mode window" })
+
 vim.keymap.set("c", "<Esc>", "<C-c>", { desc = "Exit command mode without running command" })
 
 vim.keymap.set("n", "<leader>cs", "z=", { desc = "[c]ode [s]pell check fix" })
