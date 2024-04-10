@@ -143,8 +143,8 @@ return {
       rubocop = {},
 
       -- Python
-      -- pyright = {},
-      basedpyright = {},
+      pyright = {},
+      -- basedpyright = {},
       mypy = {},
       debugpy = {},
       ruff = {},
