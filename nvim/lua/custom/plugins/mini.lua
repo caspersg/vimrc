@@ -34,8 +34,9 @@ return { -- Collection of various small independent plugins/modules
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
 
-    require("mini.files").setup()
-    vim.keymap.set("n", "<leader>mf", ":lua MiniFiles.open()<CR>", { desc = "[m]mini [f]files" })
+    -- using oil and nvim tree
+    -- require("mini.files").setup()
+    -- vim.keymap.set("n", "<leader>mf", ":lua MiniFiles.open()<CR>", { desc = "[m]mini [f]files" })
 
     require("mini.jump").setup()
 
