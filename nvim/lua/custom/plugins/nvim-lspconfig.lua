@@ -7,7 +7,6 @@ return {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     { "j-hui/fidget.nvim", opts = {} },
@@ -16,6 +15,7 @@ return {
     -- used for completion, annotations and signatures of Neovim apis
     { "folke/neodev.nvim", opts = {} },
   },
+  opts = { opts = { inlay_hints = { enabled = true } } },
   config = function()
     -- Brief Aside: **What is LSP?**
     --
@@ -143,7 +143,9 @@ return {
       rubocop = {},
 
       -- Python
-      pyright = {},
+      -- pyright = {},
+      basedpyright = {},
+      mypy = {},
       debugpy = {},
       ruff = {},
       ruff_lsp = {},
