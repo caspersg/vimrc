@@ -518,6 +518,10 @@ vim.keymap.set("n", "<leader>x", request_hover, { desc = "testing" })
 -- problems:
 -- Can't get all symbols, there's a limit
 -- can't search by type
+--
+-- So instead, get all symbols from current document
+-- jump to the first: works
+-- show list of options in telescope: problems with async
 
 function print_symbols()
   -- Step 1: Search for all function symbols in the workspace
@@ -601,6 +605,125 @@ local function go_to_symbol(symbol, bufnr)
   end
 end
 
+local function async_fetch_hover(ctx, symbol, type_to_match, on_complete)
+  co = coroutine.create(function()
+    print("got async with " .. symbol.name)
+
+    local kind = vim.lsp.protocol.SymbolKind[symbol.kind] or "Unknown"
+    local line = string.format(
+      "[%s] %s %s - %s",
+      kind,
+      symbol.name,
+      symbol.kind,
+      (symbol.location and symbol.location.uri) or "No location",
+      symbol.selectionRange or "No SelectionRange"
+    )
+    print(line)
+    local result = nil
+
+    -- print("looking at symbol " .. symbol.name)
+    -- Step 2: Request hover information for each function symbol
+    vim.lsp.buf_request(0, "textDocument/hover", {
+      textDocument = ctx.params.textDocument,
+      position = symbol.selectionRange.start,
+      -- textDocument = { uri = symbol.location.uri },
+      -- position = symbol.location.range.start,
+    }, function(hover_err, hover_result, hover_ctx, hover_config)
+      print("got hover response")
+      if hover_err then
+        vim.notify("Error during textDocument/hover request: " .. tostring(hover_err), vim.log.levels.ERROR)
+        return
+      end
+      if hover_result then
+        -- Process the hover result to extract and analyze the type information
+        local contents = hover_result.contents
+        local value = ""
+        if contents.kind then
+          -- MarkupContent
+          value = contents.value
+          -- print("value kind")
+        elseif contents.language then
+          -- MarkedString
+          value = contents.value
+          -- print("value language")
+        elseif type(contents) == "table" then
+          -- Array of MarkedString or MarkupContent
+          value = contents[1].value
+          -- print("value table")
+        else
+          -- Plain string
+          value = contents
+          print("value str")
+        end
+        -- print("value " .. value .. "looking for match " .. type_to_match)
+        -- Check if the function signature includes the type_to_match
+        if value:find(type_to_match) then
+          print("Matched function: " .. symbol.name)
+          result = symbol
+          coroutine.resume(co, symbol)
+          -- always go to the first
+          -- go_to_symbol(symbol)
+        end
+      end
+    end)
+
+    -- wait for async
+    coroutine.yield()
+
+    -- once complete, call back
+    if result then
+      print("got result" .. result.name)
+      on_complete({
+        name = result.name,
+        kind = vim.lsp.protocol.SymbolKind[result.kind] or "Unknown",
+        range = result.selectionRange,
+      })
+    else
+      print("no result" .. result)
+    end
+  end)
+
+  -- start the coroutine
+  coroutine.resume(co)
+end
+
+function show_picker(symbols)
+  local pickers = require("telescope.pickers")
+  local finders = require("telescope.finders")
+  local conf = require("telescope.config").values
+  local action_state = require("telescope.actions.state")
+  local actions = require("telescope.actions")
+  -- Create a Telescope picker for the symbols
+  pickers
+    .new({}, {
+      prompt_title = "Document Symbols",
+      finder = finders.new_table({
+        results = symbols,
+        entry_maker = function(entry)
+          return {
+            value = entry,
+            display = entry.name .. " (" .. entry.kind .. ")",
+            ordinal = entry.name,
+          }
+        end,
+      }),
+      sorter = conf.generic_sorter({}),
+      attach_mappings = function(prompt_bufnr, map)
+        actions.select_default:replace(function()
+          actions.close(prompt_bufnr)
+          local selection = action_state.get_selected_entry()
+          local range = selection.value.range
+          local position = range.start
+          local line = position.line + 1 -- Convert from 0-based to 1-based indexing
+          local character = position.character + 1 -- Convert from 0-based to 1-based indexing
+          vim.api.nvim_win_set_cursor(0, { line, character })
+        end)
+        return true
+      end,
+    })
+    :find()
+end
+
 function analyze_function_signatures(type_to_match)
   -- look for specific symbol name, as we can't search ALL symbols
   -- local params = { query = query or "client" } -- An empty query string will request no symbols
@@ -615,66 +738,20 @@ function analyze_function_signatures(type_to_match)
       return
     end
     if result and #result > 0 then
+      local symbols = {}
       -- print("got a result")
       -- Filter the results for functions or methods
-      for k, symbol in ipairs(result) do
-        local kind = vim.lsp.protocol.SymbolKind[symbol.kind] or "Unknown"
-        local line = string.format(
-          "%s [%s] %s %s - %s",
-          k,
-          kind,
-          symbol.name,
-          symbol.kind,
-          (symbol.location and symbol.location.uri) or "No location",
-          symbol.selectionRange or "No SelectionRange"
-        )
-        -- print(line)
-
+      for _, symbol in ipairs(result) do
         if symbol.kind == 12 or symbol.kind == 6 then -- 12 is Function, 6 is Method
-          -- print("looking at symbol " .. symbol.name)
-          -- Step 2: Request hover information for each function symbol
-          vim.lsp.buf_request(0, "textDocument/hover", {
-            textDocument = ctx.params.textDocument,
-            position = symbol.selectionRange.start,
-            -- textDocument = { uri = symbol.location.uri },
-            -- position = symbol.location.range.start,
-          }, function(hover_err, hover_result, hover_ctx, hover_config)
-            if hover_err then
-              vim.notify("Error during textDocument/hover request: " .. tostring(hover_err), vim.log.levels.ERROR)
-              return
-            end
-            if hover_result then
-              -- Process the hover result to extract and analyze the type information
-              local contents = hover_result.contents
-              local value = ""
-              if contents.kind then
-                -- MarkupContent
-                value = contents.value
-                -- print("value kind")
-              elseif contents.language then
-                -- MarkedString
-                value = contents.value
-                -- print("value language")
-              elseif type(contents) == "table" then
-                -- Array of MarkedString or MarkupContent
-                value = contents[1].value
-                -- print("value table")
-              else
-                -- Plain string
-                value = contents
-                print("value str")
-              end
-              -- print("value " .. value .. "looking for match " .. type_to_match)
-              -- Check if the function signature includes the type_to_match
-              if value:find(type_to_match) then
-                print("Matched function: " .. symbol.name)
-                -- always go to the first
-                go_to_symbol(symbol)
-              end
-            end
+          print("calling async with " .. symbol.name)
+          async_fetch_hover(ctx, symbol, type_to_match, function(found)
+            print("got result with " .. found.name)
+            table.insert(symbols, found)
           end)
         end
       end
+      print("got symbols ")
+      show_picker(symbols)
     else
       print("No symbols found")
     end
