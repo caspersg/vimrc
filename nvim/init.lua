@@ -501,11 +501,25 @@ local function request_hover()
 end
 
 -- Call the function to request hover information
-request_hover()
+-- request_hover()
 
 vim.keymap.set("n", "<leader>x", request_hover, { desc = "testing" })
 
-function analyze_function_signatures(type_to_match)
+-- Basic idea:
+-- get all symbols, then filter to just methods/functions, then filter by param type
+-- to find all the methods that have the current type as a parameter
+--
+-- below approach:
+-- call workspace/symbol
+-- filter by kind
+-- call workspace/symbol to get type
+-- filter result by the type_to_match
+--
+-- problems:
+-- Can't get all symbols, there's a limit
+-- can't search by type
+
+function print_symbols()
   -- Step 1: Search for all function symbols in the workspace
   vim.lsp.buf_request(0, "workspace/symbol", { query = "" }, function(err, result, ctx, config)
     if err then
@@ -513,17 +527,81 @@ function analyze_function_signatures(type_to_match)
       return
     end
     if result then
-      vim.notify("got a result")
+      print("got a result")
+      for k, v in pairs(result) do
+        print(k .. " = " .. v)
+      end
+    end
+  end)
+end
 
-      -- Filter the results for functions or methods
+function p_symbols(query)
+  local params = { query = query or "TargetAccount" } -- An empty query string will request no symbols
+  local bufnr = vim.api.nvim_get_current_buf() -- Get the current buffer number
+
+  vim.lsp.buf_request(bufnr, "workspace/symbol", params, function(err, result, ctx, config)
+    if err then
+      vim.notify("Error during workspace/symbol request: " .. tostring(err), vim.log.levels.ERROR)
+      return
+    end
+    if result and #result > 0 then
       for _, symbol in ipairs(result) do
-        vim.notify("looking at symbol " .. symbol .. " kind " .. symbol.kind)
+        local kind = vim.lsp.protocol.SymbolKind[symbol.kind] or "Unknown"
+        local line = string.format(
+          "[%s] %s %s - %s",
+          kind,
+          symbol.name,
+          symbol.kind,
+          (symbol.location and symbol.location.uri) or "No location"
+        )
+        -- print(line)
         if symbol.kind == 12 or symbol.kind == 6 then -- 12 is Function, 6 is Method
-          vim.notify("looking at symbol " .. symbol)
+          print("found method or function " .. line)
+        end
+      end
+    else
+      print("No symbols found")
+    end
+  end)
+end
+
+function analyze_function_signatures(type_to_match)
+  -- look for specific symbol name, as we can't search ALL symbols
+  -- local params = { query = query or "client" } -- An empty query string will request no symbols
+  -- local bufnr = vim.api.nvim_get_current_buf() -- Get the current buffer number
+
+  local params = { textDocument = vim.lsp.util.make_text_document_params() }
+
+  -- vim.lsp.buf_request(bufnr, "workspace/symbol", params, function(err, result, ctx, config)
+  vim.lsp.buf_request(0, "textDocument/documentSymbol", params, function(err, result, ctx, config)
+    if err then
+      vim.notify("Error during textDocument/documentSymbol request: " .. tostring(err), vim.log.levels.ERROR)
+      return
+    end
+    if result and #result > 0 then
+      print("got a result")
+      -- Filter the results for functions or methods
+      for k, symbol in ipairs(result) do
+        local kind = vim.lsp.protocol.SymbolKind[symbol.kind] or "Unknown"
+        local line = string.format(
+          "%s [%s] %s %s - %s",
+          k,
+          kind,
+          symbol.name,
+          symbol.kind,
+          (symbol.location and symbol.location.uri) or "No location",
+          symbol.selectionRange or "No SelectionRange"
+        )
+        print(line)
+
+        if symbol.kind == 12 or symbol.kind == 6 then -- 12 is Function, 6 is Method
+          print("looking at symbol " .. symbol.name)
           -- Step 2: Request hover information for each function symbol
           vim.lsp.buf_request(0, "textDocument/hover", {
             textDocument = ctx.params.textDocument,
-            position = symbol.location.range.start,
+            position = symbol.selectionRange.start,
+            -- textDocument = { uri = symbol.location.uri },
+            -- position = symbol.location.range.start,
           }, function(hover_err, hover_result, hover_ctx, hover_config)
             if hover_err then
               vim.notify("Error during textDocument/hover request: " .. tostring(hover_err), vim.log.levels.ERROR)
@@ -536,28 +614,33 @@ function analyze_function_signatures(type_to_match)
               if contents.kind then
                 -- MarkupContent
                 value = contents.value
+                print("value kind")
               elseif contents.language then
                 -- MarkedString
                 value = contents.value
+                print("value language")
               elseif type(contents) == "table" then
                 -- Array of MarkedString or MarkupContent
                 value = contents[1].value
+                print("value table")
               else
                 -- Plain string
                 value = contents
+                print("value str")
               end
+              print("value " .. value .. "looking for match " .. type_to_match)
               -- Check if the function signature includes the type_to_match
               if value:find(type_to_match) then
                 print("Matched function: " .. symbol.name)
-                vim.notify("Matched function: " .. symbol.name)
               end
             end
           end)
         end
       end
+    else
+      print("No symbols found")
     end
   end)
-  vim.notify("nothing found")
 end
 
 -- Example usage: list functions that have 'string' in their signature
