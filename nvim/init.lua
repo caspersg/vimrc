@@ -454,3 +454,115 @@ require("custom/config/keymaps")
 -- has semantic highlighting
 -- vim.cmd.colorscheme("catppuccin")
 vim.cmd.colorscheme("tokyodark")
+
+-- playing around with LSP stuff
+-- chatgpt generated
+local function on_hover(err, result, ctx, config)
+  if err then
+    vim.notify("Error during hover request: " .. tostring(err), vim.log.levels.ERROR)
+    return
+  end
+  if result then
+    -- Process the result to extract and use the type information
+    -- For example, you might want to print the type information in the command line
+    local contents = result.contents
+    -- The contents could be in MarkedString, MarkupContent, or an array of either
+    if contents.kind then
+      -- MarkupContent
+      print(contents.value)
+      vim.notify("got markupContent" .. contents.value)
+    elseif contents.language then
+      -- MarkedString
+      print(contents.value)
+      vim.notify("got markedString " .. contents.value)
+    elseif type(contents) == "table" then
+      -- Array of MarkedString or MarkupContent
+      for _, item in ipairs(contents) do
+        if item.language then
+          print(item.value)
+          vim.notify("got item.value " .. item.value)
+        else
+          print(item)
+          vim.notify("got item " .. item)
+        end
+      end
+    else
+      -- Plain string
+      print(contents)
+      vim.notify("got plain string " .. contents)
+    end
+  end
+end
+
+-- Function to request hover information
+local function request_hover()
+  local params = vim.lsp.util.make_position_params()
+  vim.lsp.buf_request(0, "textDocument/hover", params, on_hover)
+end
+
+-- Call the function to request hover information
+request_hover()
+
+vim.keymap.set("n", "<leader>x", request_hover, { desc = "testing" })
+
+function analyze_function_signatures(type_to_match)
+  -- Step 1: Search for all function symbols in the workspace
+  vim.lsp.buf_request(0, "workspace/symbol", { query = "" }, function(err, result, ctx, config)
+    if err then
+      vim.notify("Error during workspace/symbol request: " .. tostring(err), vim.log.levels.ERROR)
+      return
+    end
+    if result then
+      vim.notify("got a result")
+
+      -- Filter the results for functions or methods
+      for _, symbol in ipairs(result) do
+        vim.notify("looking at symbol " .. symbol .. " kind " .. symbol.kind)
+        if symbol.kind == 12 or symbol.kind == 6 then -- 12 is Function, 6 is Method
+          vim.notify("looking at symbol " .. symbol)
+          -- Step 2: Request hover information for each function symbol
+          vim.lsp.buf_request(0, "textDocument/hover", {
+            textDocument = ctx.params.textDocument,
+            position = symbol.location.range.start,
+          }, function(hover_err, hover_result, hover_ctx, hover_config)
+            if hover_err then
+              vim.notify("Error during textDocument/hover request: " .. tostring(hover_err), vim.log.levels.ERROR)
+              return
+            end
+            if hover_result then
+              -- Process the hover result to extract and analyze the type information
+              local contents = hover_result.contents
+              local value = ""
+              if contents.kind then
+                -- MarkupContent
+                value = contents.value
+              elseif contents.language then
+                -- MarkedString
+                value = contents.value
+              elseif type(contents) == "table" then
+                -- Array of MarkedString or MarkupContent
+                value = contents[1].value
+              else
+                -- Plain string
+                value = contents
+              end
+              -- Check if the function signature includes the type_to_match
+              if value:find(type_to_match) then
+                print("Matched function: " .. symbol.name)
+                vim.notify("Matched function: " .. symbol.name)
+              end
+            end
+          end)
+        end
+      end
+    end
+  end)
+  vim.notify("nothing found")
+end
+
+-- Example usage: list functions that have 'string' in their signature
+-- analyze_function_signatures("string")
+
+-- got markupContent```python
+-- (parameter) target_account: TargetAccount
+-- ```
