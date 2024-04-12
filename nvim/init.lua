@@ -565,6 +565,42 @@ function p_symbols(query)
   end)
 end
 
+-- local function go_to_symbol(symbol)
+--   if symbol.location then -- Check if the symbol has a location property
+--     -- Convert the URI to a file path if necessary
+--     local bufnr = vim.uri_to_bufnr(symbol.location.uri)
+--     -- Make sure the buffer is loaded
+--     vim.fn.bufload(bufnr)
+--
+--     -- Extract the line and character position from the symbol's location range
+--     local position = symbol.location.range.start
+--     local line = position.line + 1 -- Convert from 0-based to 1-based indexing
+--     local character = position.character + 1 -- Convert from 0-based to 1-based indexing
+--
+--     -- Move the cursor to the symbol's location
+--     vim.api.nvim_win_set_cursor(0, { line, character })
+--   else
+--     vim.notify("Symbol does not have a location.", vim.log.levels.WARN)
+--   end
+-- end
+
+local function go_to_symbol(symbol, bufnr)
+  -- Ensure the buffer number is provided, or use the current buffer
+  bufnr = bufnr or vim.api.nvim_get_current_buf()
+
+  if symbol.selectionRange then -- Check if the symbol has a selectionRange property
+    -- Extract the line and character position from the symbol's selectionRange
+    local position = symbol.selectionRange.start
+    local line = position.line + 1 -- Convert from 0-based to 1-based indexing
+    local character = position.character + 1 -- Convert from 0-based to 1-based indexing
+
+    -- Set the cursor to the symbol's selectionRange start position
+    vim.api.nvim_win_set_cursor(0, { line, character })
+  else
+    vim.notify("Symbol does not have a selectionRange.", vim.log.levels.WARN)
+  end
+end
+
 function analyze_function_signatures(type_to_match)
   -- look for specific symbol name, as we can't search ALL symbols
   -- local params = { query = query or "client" } -- An empty query string will request no symbols
@@ -579,7 +615,7 @@ function analyze_function_signatures(type_to_match)
       return
     end
     if result and #result > 0 then
-      print("got a result")
+      -- print("got a result")
       -- Filter the results for functions or methods
       for k, symbol in ipairs(result) do
         local kind = vim.lsp.protocol.SymbolKind[symbol.kind] or "Unknown"
@@ -592,10 +628,10 @@ function analyze_function_signatures(type_to_match)
           (symbol.location and symbol.location.uri) or "No location",
           symbol.selectionRange or "No SelectionRange"
         )
-        print(line)
+        -- print(line)
 
         if symbol.kind == 12 or symbol.kind == 6 then -- 12 is Function, 6 is Method
-          print("looking at symbol " .. symbol.name)
+          -- print("looking at symbol " .. symbol.name)
           -- Step 2: Request hover information for each function symbol
           vim.lsp.buf_request(0, "textDocument/hover", {
             textDocument = ctx.params.textDocument,
@@ -614,24 +650,26 @@ function analyze_function_signatures(type_to_match)
               if contents.kind then
                 -- MarkupContent
                 value = contents.value
-                print("value kind")
+                -- print("value kind")
               elseif contents.language then
                 -- MarkedString
                 value = contents.value
-                print("value language")
+                -- print("value language")
               elseif type(contents) == "table" then
                 -- Array of MarkedString or MarkupContent
                 value = contents[1].value
-                print("value table")
+                -- print("value table")
               else
                 -- Plain string
                 value = contents
                 print("value str")
               end
-              print("value " .. value .. "looking for match " .. type_to_match)
+              -- print("value " .. value .. "looking for match " .. type_to_match)
               -- Check if the function signature includes the type_to_match
               if value:find(type_to_match) then
                 print("Matched function: " .. symbol.name)
+                -- always go to the first
+                go_to_symbol(symbol)
               end
             end
           end)
