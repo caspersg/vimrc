@@ -164,6 +164,13 @@ vim.opt.scrolloff = 2
 vim.opt.spelllang = "en_us"
 vim.opt.spell = false
 
+-- tabs
+vim.shiftwidth = 2
+vim.tabstop = 2
+vim.softtabstop = 2
+vim.smartindent = true
+vim.expandtab = true
+
 -- auto reload buffer
 vim.o.autoread = true
 -- vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
