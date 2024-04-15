@@ -9,7 +9,7 @@ return {
   --   end,
   "github/copilot.vim",
   config = function()
-    require("copilot").setup({})
+    -- require("copilot").setup({})
     -- vim.keymap.set("n", "<leader>g", "<cmd>Copilot<CR>", { desc = "Copilot" })
   end,
 }
