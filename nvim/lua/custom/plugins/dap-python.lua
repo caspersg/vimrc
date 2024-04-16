@@ -38,11 +38,15 @@ return {
     -- debugpy/bin/python -m pip install pytest
     require("dap").configurations.python = {
       {
+        -- Configuration for attaching to a running process
         type = "python",
-        request = "launch",
-        name = "Debug Tests",
-        module = "pytest",
-        args = { "tests" },
+        request = "attach",
+        connect = {
+          port = 5678, -- The port should match the one used by debugpy when starting your tests
+          host = "127.0.0.1",
+        },
+        name = "Attach to running process",
+        justMyCode = false, -- Optional: set to false to also debug external libraries
       },
       {
         type = "python",
@@ -53,6 +57,13 @@ return {
         args = {
           "${file}",
         },
+      },
+      {
+        type = "python",
+        request = "launch",
+        name = "Debug Tests",
+        module = "pytest",
+        args = { "tests" },
       },
       -- {
       --   -- Configuration for running the nearest test using pytest
