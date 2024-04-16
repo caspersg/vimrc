@@ -4,8 +4,7 @@ return {
     "mfussenegger/nvim-dap",
   },
   config = function()
-    -- This doesn't work
-    -- local python_bin = "~/.virtualenvs/debugpy/bin/python" -- vim.fn.expand("$HOME") .. "/.pyenv/shims/python"
+    local python_bin = "~/.virtualenvs/debugpy/bin/python" -- vim.fn.expand("$HOME") .. "/.pyenv/shims/python"
 
     -- dynamically get the python venv
     -- This creates a pipenv env on neovim startup
@@ -25,7 +24,7 @@ return {
     -- -- end
     --
     -- -- local dap_python = "$XDG_DATA_HOME/nvim/mason/packages/venv/bin/python"
-    -- require("dap-python").setup(python_bin)
+    require("dap-python").setup(python_bin)
     require("dap-python").test_runner = "pytest"
     -- vim.keymap.set({ "n", "v" }, "<Leader>dt", function()
     --   require("dap-python").test_method()
