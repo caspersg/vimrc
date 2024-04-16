@@ -4,7 +4,19 @@ return {
     "mfussenegger/nvim-dap",
   },
   config = function()
-    local python_bin = "~/.virtualenvs/debugpy/bin/python" -- vim.fn.expand("$HOME") .. "/.pyenv/shims/python"
+    -- This doesn't work
+    -- local python_bin = "~/.virtualenvs/debugpy/bin/python" -- vim.fn.expand("$HOME") .. "/.pyenv/shims/python"
+
+    -- dynamically get the python venv
+    local cmd = "pipenv run which python | tail -1"
+    -- doesn't work
+    -- local python_bin = vim.fn.system({ cmd })
+    local handle = io.popen(cmd)
+    local python_bin = handle:read("*a")
+    handle:close()
+    -- print("*** get venv python " .. python_bin)
+
+    vim.g.python3_host_prog = python_bin
 
     -- require("dap-python").setup("~/.pyenv/shims/python")
     -- require("dap-python").resolve_python = function()
