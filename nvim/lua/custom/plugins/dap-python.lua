@@ -44,6 +44,30 @@ return {
         module = "pytest",
         args = { "tests" },
       },
+      {
+        type = "python",
+        request = "launch",
+        name = "Debug current file",
+        -- program = "${file}",
+        module = "pytest",
+        args = {
+          "${file}",
+        },
+      },
+      -- {
+      --   -- Configuration for running the nearest test using pytest
+      --   type = "python",
+      --   request = "launch",
+      --   name = "Debug nearest test",
+      --   module = "pytest",
+      --   args = {
+      --     "-vv",
+      --     "${file}",
+      --     "--last-failed-no-failures",
+      --     "--exitfirst",
+      --     -- "--pdbcls=IPython.terminal.debugger:Pdb",
+      --   },
+      -- },
     }
 
     -- require("dap-python").setup("~/.pyenv/shims/python", {
