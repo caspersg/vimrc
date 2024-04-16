@@ -12,11 +12,12 @@ return {
     -- doesn't work
     -- local python_bin = vim.fn.system({ cmd })
     local handle = io.popen(cmd)
-    local python_bin = handle:read("*a")
+    local result = handle:read("*a")
+    local python_bin = result:match("^%s*(.-)%s*$")
     handle:close()
     -- print("*** get venv python " .. python_bin)
 
-    vim.g.python3_host_prog = python_bin
+    -- vim.g.python3_host_prog = python_bin
 
     -- require("dap-python").setup("~/.pyenv/shims/python")
     -- require("dap-python").resolve_python = function()
@@ -25,11 +26,21 @@ return {
 
     -- local dap_python = "$XDG_DATA_HOME/nvim/mason/packages/venv/bin/python"
     require("dap-python").setup(python_bin)
-    require("dap-python").test_runner = "pytest"
+    print("** using python " .. python_bin)
+    -- require("dap-python").resolve_python = function()
+    --   return python_bin
+    -- end
+    -- require("dap-python").test_runner = "pytest"
     -- vim.keymap.set({ "n", "v" }, "<Leader>dt", function()
     --   require("dap-python").test_method()
     -- end)
-
+    --
+    -- this just hangs
+    -- require("dap").adapters.python = {
+    --   type = "executable",
+    --   command = python_bin,
+    --   args = { "-m", "debugpy.adapter" },
+    -- }
     -- manual steps
     -- mkdir .virtualenvs
     -- cd .virtualenvs
@@ -40,9 +51,11 @@ return {
       {
         type = "python",
         request = "launch",
-        name = "Debug Tests",
+        name = "Debug with pytest",
         module = "pytest",
-        args = { "tests" },
+        args = { "${file}", "-m debugpy", "-vv" },
+        -- pythonPath = python_bin,
+        cwd = "${workspaceFolder}", -- Set this to your project's root directory
       },
       {
         type = "python",
@@ -51,8 +64,17 @@ return {
         -- program = "${file}",
         module = "pytest",
         args = {
+          "-m debugpy",
           "${file}",
+          "-vv",
         },
+      },
+      {
+        type = "python",
+        request = "launch",
+        name = "Debug Tests",
+        module = "pytest",
+        args = { "-m debugpy", "tests" },
       },
       -- {
       --   -- Configuration for running the nearest test using pytest
