@@ -110,7 +110,7 @@ nvim-dap-ruby
 - [x] debugger
 - [ ] spelling plugin?
 - [ ] rebuild ruby env?
-- [ ] python lsp
+- [x] python lsp
 -- installed
 - [ ] java lsp
 -- installed
@@ -118,7 +118,7 @@ nvim-dap-ruby
 - [ ] learn jumplists, changelists, and taglists
 - [x] learn vim marks
 - [ ] profile neovim performance
-- [ ] look through https://github.com/rockerBOO/awesome-neovim
+- [x] look through https://github.com/rockerBOO/awesome-neovim
 
 
 # testing

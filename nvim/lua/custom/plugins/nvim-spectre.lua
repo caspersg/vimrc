@@ -7,7 +7,7 @@ return {
       "n",
       "<leader>sr",
       '<cmd>lua require("spectre").toggle()<CR>',
-      { desc = "[s]earch [replace] Toggle Spectre" }
+      { desc = "[s]earch [r]eplace Toggle Spectre" }
     )
     vim.keymap.set("v", "<leader>sv", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
       desc = "[s]earch [v]isual current word",
