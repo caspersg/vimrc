@@ -12,7 +12,9 @@ return {
     local nt = require("neotest")
     nt.setup({
       adapters = {
-        require("neotest-python"),
+        require("neotest-python")({
+          args = { "-vv", "-n 0", "--no-cov", "--disable-pytest-warnings" },
+        }),
       },
     })
     vim.keymap.set("n", "<leader>rtf", function()
@@ -24,6 +26,12 @@ return {
     vim.keymap.set("n", "<leader>rtd", function()
       nt.run.run({ strategy = "dap" })
     end, { desc = "[r]un [t]est [d]ebug nearest" })
+    vim.keymap.set(
+      "n",
+      "<leader>tn",
+      ":Neotest output-panel<CR>:Neotest summary<CR>",
+      { desc = "[t]oggle [n]eotest panels" }
+    )
   end,
 
   -- trying and failing for ruby
