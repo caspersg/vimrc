@@ -1,23 +1,24 @@
 return { -- Highlight, edit, and navigate code
-  'nvim-treesitter/nvim-treesitter',
-  build = ':TSUpdate',
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
   opts = {
     ensure_installed = {
-      'bash',
-      'c',
-      'html',
-      'lua',
-      'markdown',
-      'vim',
-      'vimdoc',
-      'ruby',
-      'python',
-      'java',
-      'go',
-      'vimdoc',
-      'javascript',
-      'typescript',
-      'rust',
+      "bash",
+      "c",
+      "html",
+      "lua",
+      "markdown",
+      "vim",
+      "vimdoc",
+      "ruby",
+      "python",
+      "java",
+      "go",
+      "vimdoc",
+      "javascript",
+      "typescript",
+      "tsx",
+      "rust",
     },
     -- Autoinstall languages that are not installed
     auto_install = true,
@@ -28,19 +29,19 @@ return { -- Highlight, edit, and navigate code
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
     ---@diagnostic disable-next-line: missing-fields
-    require('nvim-treesitter.configs').setup(opts)
+    require("nvim-treesitter.configs").setup(opts)
 
-    require('nvim-treesitter.configs').setup {
+    require("nvim-treesitter.configs").setup({
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = '<C-n>',
-          node_incremental = '<C-n>',
+          init_selection = "<C-n>",
+          node_incremental = "<C-n>",
           -- scope_incremental = '<C-s>',
-          node_decremental = '<C-m>',
+          node_decremental = "<C-m>",
         },
       },
-    }
+    })
 
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:

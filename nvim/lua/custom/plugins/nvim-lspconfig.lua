@@ -151,8 +151,8 @@ return {
       ruff_lsp = {},
 
       -- Typescript
-      -- better than eslint, as it fixes on save as expected
-      eslint_d = {},
+      eslint = {},
+      tsserver = {},
 
       -- Rust
       rust_analyzer = {},
