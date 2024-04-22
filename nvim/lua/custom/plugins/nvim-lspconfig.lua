@@ -150,6 +150,10 @@ return {
       ruff = {},
       ruff_lsp = {},
 
+      -- Typescript
+      -- better than eslint, as it fixes on save as expected
+      eslint_d = {},
+
       -- Rust
       rust_analyzer = {},
       -- Java
