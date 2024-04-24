@@ -82,6 +82,10 @@ the "fwompner" option, saved in scripts/
 compile to exe
 add link to startup dir
 
+## home row mods
+### karabiner
+https://github.com/Erlendms/karabiner-actions?tab=readme-ov-file#home-row-mods
+
 # open links in neovim from iterm2
 
 https://gist.github.com/rpapallas/31dfdf0626d078a357fccd46cdf6eafd
