@@ -83,8 +83,24 @@ compile to exe
 add link to startup dir
 
 ## home row mods
-### karabiner
+Replace CAPS with ESC and CTRL too
+
+### macos
+karabiner
 https://github.com/Erlendms/karabiner-actions?tab=readme-ov-file#home-row-mods
+TODO replace CAPS with esc and ctrl?
+
+### win
+kmonad
+download binary
+https://github.com/kmonad/kmonad/releases
+copy kbd file to kmonad dir
+add shortcut to kmonad binary calling with kbd file
+eg ...\Documents\kmonad\kmonad-0.4.1-win.exe ...\Documents\kmonad\home_row_mods_win.kbd
+add shortcut to dir given by win+r shell:startup 
+
+This does CAPS to ESC as well, but no CTRL
+
 
 # open links in neovim from iterm2
 
