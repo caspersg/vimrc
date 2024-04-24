@@ -34,6 +34,8 @@ vim.keymap.set("c", "<Esc>", "<C-c>", { desc = "Exit command mode without runnin
 
 vim.keymap.set("n", "<leader>cs", "z=", { desc = "[c]ode [s]pell check fix" })
 
+vim.keymap.set("n", "<S-u>", ":redo<CR>", { desc = "redo" })
+
 -- custom keymaps )
 
 -- notes (
