@@ -22,7 +22,7 @@ return {
         previewer = false,
       },
     })
-    vim.keymap.set("n", "<leader>S", require("auto-session.session-lens").search_session, { desc = "search [S]ession" })
+    vim.keymap.set("n", "<leader>n", require("auto-session.session-lens").search_session, { desc = "search sessio[n]" })
     -- C-s when view is open to switch to alternate
   end,
 }
