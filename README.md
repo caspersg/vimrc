@@ -1,2 +1,1 @@
-# vimrc
-my vimrc
+Replaced by https://github.com/caspersg/dotfiles
