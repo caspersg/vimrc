@@ -1,4 +1,3 @@
-
 # install
 
 brew install neovim
@@ -18,6 +17,7 @@ rm .git from nvim
 setup soft link in my ~/projects/vimrc
 
 # install terminal
+
 ## kitty
 
 brew install --cask kitty
@@ -34,35 +34,42 @@ font_size 16.0
 scrolling and buffers are weird
 
 ## iterm
+
 gone back to iterm2
 fullscreen mode:
+
 - disable macos animations
 - iterm2 disable native fullscreen
-install Github dark color scheme
-use Mononoki Nerd Font Mono
-ignore cmd-P
+  install Github dark color scheme
+  use Mononoki Nerd Font Mono
+  ignore cmd-P
 
 ## windows terminal ubuntu WSL
 
 # configure neovim
+
 follow https://github.com/nvim-lua/kickstart.nvim
 
 brew install ripgrep fd
 
-
 # setup git
+
 vim-fugitive
 caspersg/shell/git_aliases.sh
 diffview.nvm
 neogit
 
 # CAPS to ctrl and esc
+
 ## xcape
+
 https://gist.github.com/tanyuan/55bca522bf50363ae4573d4bdcf06e2e?permalink_comment_id=4271644
 xcape not on macos
 
 ## hammerspoon
+
 https://github.com/jasonrudolph/ControlEscape.spoon
+
 ```
 mkdir -p ~/.hammerspoon/Spoons
 
@@ -75,71 +82,98 @@ script/setup
 
 works!
 
+but I want home row mods and layers too
+
 ## windows
+
 https://vim.fandom.com/wiki/Map_caps_lock_to_escape_in_Windows
 the "fwompner" option, saved in scripts/
 
 compile to exe
 add link to startup dir
 
+but I want home row mods and layers too
+
 ## home row mods
+
+https://precondition.github.io/home-row-mods
+
 Replace CAPS with ESC and CTRL too
 
+And add a layer for symbols with the space bar
+
 ### macos
-karabiner
+
+#### karabiner
+
 https://github.com/Erlendms/karabiner-actions?tab=readme-ov-file#home-row-mods
-TODO replace CAPS with esc and ctrl?
+
+weird behaviour with combination of keys. You have to press them all at once to register.
+
+#### kmonad
+
+https://github.com/kmonad/kmonad/blob/master/doc/installation.md#macos
+dext already installed by karabiner elements
+build against dext
+Make sure that iokit-name matches keyboard name in macos, eg "CK530"
+
+sudo kmonad -l debug home_row_mods_macos.kbd
+
+TODO get running on startup
+launcd?
 
 ### win
+
 kmonad
 download binary
 https://github.com/kmonad/kmonad/releases
 copy kbd file to kmonad dir
 add shortcut to kmonad binary calling with kbd file
 eg ...\Documents\kmonad\kmonad-0.4.1-win.exe ...\Documents\kmonad\home_row_mods_win.kbd
-add shortcut to dir given by win+r shell:startup 
+add shortcut to dir given by win+r shell:startup
 
 This does CAPS to ESC as well, but no CTRL
-
 
 # open links in neovim from iterm2
 
 https://gist.github.com/rpapallas/31dfdf0626d078a357fccd46cdf6eafd
 
 # ruby debugger
+
 nvim-dap
 nvim-dap-ui
 nvim-dap-ruby
 
 # not needed
+
 <!-- bundle add readapt --group "development, test" -->
 <!-- gem install readapt -->
 
 # TODO
+
 - [x] better theme
--- tokyodark
-- [x] ruby lsp 
--- solargraph has goto definition
--- [ ] goto def across files.
---- works for some constants
-- [x] neogit 
--- telescope, diffview
+      -- tokyodark
+- [x] ruby lsp
+      -- solargraph has goto definition
+      -- [ ] goto def across files.
+      --- works for some constants
+- [x] neogit
+      -- telescope, diffview
 - [x] caps as ctrl and esc
 - [x] install chatgpt
--- [ ] try out features
+      -- [ ] try out features
 - [x] debugger
 - [ ] spelling plugin?
 - [ ] rebuild ruby env?
 - [x] python lsp
--- installed
+      -- installed
 - [ ] java lsp
--- installed
+      -- installed
 - [ ] learn vim registers
 - [ ] learn jumplists, changelists, and taglists
 - [x] learn vim marks
 - [ ] profile neovim performance
 - [x] look through https://github.com/rockerBOO/awesome-neovim
-
 
 # testing
 
